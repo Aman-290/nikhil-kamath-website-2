@@ -1,17 +1,12 @@
-import React, { useMemo, useState, useEffect, useRef } from 'react';
-import { BarChart, Bar, XAxis, YAxis, Tooltip, Cell } from 'recharts';
+﻿import React, { useMemo, useState, useEffect, useRef } from 'react';
+import { BarChart, Bar, XAxis, YAxis, Tooltip, Cell, ResponsiveContainer } from 'recharts';
 
 export default function ChessAccuracyChart() {
-  const chartRef = useRef(null);
-  const [chartSize, setChartSize] = useState({ width: 0, height: 0 });
-
   const fallbackData = useMemo(
     () => [
-      { name: 'Game 1', accuracy: 6.2, type: 'normal' },
-      { name: 'Game 2', accuracy: 10.9, type: 'normal' },
-      { name: 'Game 3', accuracy: 0.6, type: 'normal' },
-      { name: 'Average Club Player', accuracy: 72, type: 'baseline' },
-      { name: 'vs Viswanathan Anand', accuracy: 98.9, type: 'anomaly' },
+      { name: 'Last 30 Avg', accuracy: 5.5, type: 'normal' },
+      { name: 'Club Avg', accuracy: 72, type: 'baseline' },
+      { name: 'vs Anand', accuracy: 98.9, type: 'anomaly' },
     ],
     []
   );
@@ -48,76 +43,49 @@ export default function ChessAccuracyChart() {
       });
   }, [fallbackData]);
 
-  useEffect(() => {
-    if (!chartRef.current) return undefined;
-
-    const updateSize = () => {
-      if (!chartRef.current) return;
-      const rect = chartRef.current.getBoundingClientRect();
-      const width = Math.max(0, Math.floor(rect.width));
-      const height = Math.max(0, Math.floor(rect.height));
-      setChartSize({ width, height });
-    };
-
-    updateSize();
-
-    const observer = new ResizeObserver(() => updateSize());
-    observer.observe(chartRef.current);
-
-    window.addEventListener('resize', updateSize);
-
-    return () => {
-      observer.disconnect();
-      window.removeEventListener('resize', updateSize);
-    };
-  }, []);
-
   const chartData = data.length > 0 ? data : fallbackData;
-  const canRenderChart = chartSize.width > 0 && chartSize.height > 0;
+
+  const CustomTooltip = ({ active, payload, label }) => {
+    if (active && payload && payload.length) {
+      return (
+        <div className="bg-[#050505] border border-white/10 p-4 rounded-xl shadow-2xl">
+          <p className="text-white/60 text-xs font-mono uppercase tracking-widest mb-1">{label}</p>
+          <p className="text-white font-clash text-2xl">{`${payload[0].value}%`}</p>
+        </div>
+      );
+    }
+    return null;
+  };
 
   return (
-    <div className="w-full min-w-0 min-h-[22rem] pt-4">
-      <h4 className="text-primary-text font-satoshi text-center mb-6">Nikhil Kamath's Chess Accuracy — Selected Games</h4>
-      <div ref={chartRef} className="w-full min-w-0 h-[17.5rem]">
-        {canRenderChart ? (
-          <BarChart
-            width={chartSize.width}
-            height={chartSize.height}
-            data={chartData}
-            margin={{ top: 20, right: 12, left: 0, bottom: 8 }}
-          >
-            <XAxis
-              dataKey="name"
-              stroke="#9CA3AF"
-              tick={{ fill: '#9CA3AF', fontSize: 12, fontFamily: 'Satoshi' }}
-              tickLine={false}
-              axisLine={false}
-            />
-            <YAxis hide domain={[0, 100]} />
-            <Tooltip
-              cursor={{ fill: 'rgba(255,255,255,0.05)' }}
-              contentStyle={{ backgroundColor: '#1A1F2E', border: 'none', borderRadius: '4px', color: '#fff' }}
-            />
-            <Bar dataKey="accuracy" radius={[4, 4, 0, 0]} maxBarSize={60}>
-              {chartData.map((entry, index) => {
-                let fill = '#4B5563'; // muted tertiary
-                const name = entry?.name || '';
-                if (entry?.type === 'anomaly' || name.includes('Anand')) fill = '#D4FF00';
-                else if (entry?.type === 'baseline' || name.includes('Average')) fill = '#9CA3AF';
+    <div className="w-full h-[250px] relative mt-8">
+      <ResponsiveContainer width="100%" height="100%">
+        <BarChart
+          data={chartData}
+          margin={{ top: 20, right: 0, left: 0, bottom: 20 }}
+        >
+          <XAxis
+            dataKey="name"
+            stroke="#9CA3AF"
+            tick={{ fill: 'rgba(255,255,255,0.4)', fontSize: 11, fontFamily: 'monospace', letterSpacing: '0.1em' }}
+            tickLine={false}
+            axisLine={false}
+            dy={15}
+          />
+          <YAxis hide domain={[0, 100]} />
+          <Tooltip cursor={{ fill: 'rgba(255,255,255,0.02)' }} content={<CustomTooltip />} />
+          <Bar dataKey="accuracy" radius={[6, 6, 0, 0]} maxBarSize={80}>
+            {chartData.map((entry, index) => {
+              let fill = 'rgba(255,255,255,0.1)';
+              const name = entry?.name || '';
+              if (entry?.type === 'anomaly' || name.includes('Anand')) fill = '#FF4444'; // Red for the scandal
+              else if (entry?.type === 'baseline' || name.includes('Average') || name.includes('Club')) fill = 'rgba(255,255,255,0.3)';
 
-                return <Cell key={`cell-${index}`} fill={fill} />;
-              })}
-            </Bar>
-          </BarChart>
-        ) : (
-          <div className="w-full h-full flex items-center justify-center text-secondary-text font-mono text-xs">
-            Loading chart...
-          </div>
-        )}
-      </div>
-      <div className="text-center mt-4">
-        <span className="text-xs text-secondary-text font-mono">The bar that got him banned from Chess.com.</span>
-      </div>
+              return <Cell key={`cell-${index}`} fill={fill} className="transition-all duration-300 hover:brightness-125" />;
+            })}
+          </Bar>
+        </BarChart>
+      </ResponsiveContainer>
     </div>
   );
 }

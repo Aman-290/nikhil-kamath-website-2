@@ -112,7 +112,7 @@ export default function PodcastWall() {
               <img
                 src={`/assets/images/guests/${guest.img}`}
                 alt={guest.name}
-                className="absolute inset-0 w-full h-full object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
+                className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-all duration-500"
                 loading="lazy"
                 decoding="async"
               />
@@ -157,7 +157,7 @@ export default function PodcastWall() {
             <img
               src={`/assets/images/guests/${guest.img}`}
               alt={guest.name}
-              className="absolute inset-0 w-full h-full object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
+              className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
               loading="lazy"
               decoding="async"
             />

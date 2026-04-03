@@ -1,116 +1,149 @@
-import React from 'react';
+﻿import React from 'react';
 import { motion } from 'framer-motion';
 import ChessAccuracyChart from '../ui/ChessAccuracyChart';
 import RentOwnToggle from '../ui/RentOwnToggle';
 
 export default function ThePlateau() {
   return (
-    <section className="relative w-full py-32 z-10">
+    <section className="relative w-full py-32 z-10 bg-[#050505]">
       
-      {/* Intro */}
-      <div className="container mx-auto px-6 md:px-12 xl:px-24 max-w-7xl mb-32">
+      {/* Ambient background glows */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#D4FF00]/[0.02] to-transparent pointer-events-none" />
+
+      {/* Intro sequence */}
+      <div className="container mx-auto px-6 md:px-12 xl:px-24 max-w-7xl pt-24 mb-48 relative z-10 flex flex-col items-center">
         <motion.div 
-          className="max-w-2xl text-center mx-auto"
-          initial={{ opacity: 0, y: 20 }}
+          className="w-full text-center"
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 1 }}
         >
-          <p className="font-satoshi text-2xl md:text-3xl text-secondary-text leading-relaxed">
-            Every great line has a correction.<br/>
+          <h2 className="font-clash text-5xl md:text-[7rem] lg:text-[8rem] text-white font-medium tracking-tight leading-[0.9] mb-8 text-center text-balance mx-auto">
+            Every great line<br />has a <span className="text-white/30 italic">correction.</span>
+          </h2>
+          
+          <p className="font-satoshi text-2xl md:text-4xl text-[#D4FF00] font-medium mb-12 drop-shadow-[0_0_15px_rgba(212,255,0,0.3)]">
             Not a crash. A human moment.<br/>
-            Priced in. Recovered.<br/>
-            <span className="text-primary-text font-bold mt-4 block">Filed under: growth.</span>
+            Priced in. Recovered.
           </p>
+          
+          <div className="inline-block border border-white/20 rounded-full px-8 py-3 bg-white/[0.02] backdrop-blur-md">
+            <span className="font-mono text-[11px] tracking-[0.3em] font-medium text-white/50 uppercase">Filed under: Growth</span>
+          </div>
         </motion.div>
       </div>
 
-      {/* Chess-Gate Controversy */}
-      <div className="container mx-auto px-6 md:px-12 xl:px-24 max-w-7xl mb-32">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+      {/* Chess-Gate Controversy Card */}
+      <div className="container mx-auto px-6 md:px-12 xl:px-24 max-w-[1400px] mb-48 relative z-10">
+        
+        <div className="flex items-center gap-6 mb-16">
+          <h3 className="font-clash text-4xl sm:text-5xl text-white font-medium tracking-tight">The Anomaly</h3>
+          <div className="h-px bg-gradient-to-r from-white/20 to-transparent flex-grow" />
+          <span className="text-white/40 font-mono text-[10px] tracking-[0.2em] uppercase shrink-0">June 13, 2021</span>
+        </div>
+
+        <div className="bg-[#0A0A0A] rounded-[2.5rem] border border-white/10 p-2 shadow-[0_0_50px_rgba(0,0,0,0.5)] group grid lg:grid-cols-12 gap-0 overflow-hidden relative">
           
-          {/* Left: Graphic/Chart */}
+          {/* Ambient inner glow */}
+          <div className="absolute inset-0 bg-[#FF4444]/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+
+          {/* Left panel: Graphics & Chart */}
           <motion.div 
-            className="flex flex-col min-w-0 space-y-8 bg-surface-bg/50 p-6 rounded-2xl border border-white/5 group"
-            style={{ cursor: "url('/assets/icons/chess-knight-cursor.svg'), auto" }}
+            className="lg:col-span-5 bg-[#111] rounded-[2rem] p-8 md:p-10 relative overflow-hidden flex flex-col justify-between"
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <div className="relative w-full h-48 md:h-64 rounded-xl overflow-hidden bg-black flex items-center justify-center">
-              <img 
-                src="/assets/images/vishy-anand-shadow.png" 
-                alt="Viswanathan Anand shadow" 
-                className="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-luminosity group-hover:scale-105 transition-transform duration-1000"
-              />
-              <h3 className="relative z-10 font-clash text-3xl md:text-4xl text-center text-primary-text max-w-sm drop-shadow-xl p-4">
-                He hadn't played chess in over 15 years.
-              </h3>
+            <div className="absolute inset-0 z-0">
+               <img 
+                 src="/assets/images/vishy-anand-shadow.png" 
+                 alt="Viswanathan Anand shadow" 
+                 className="w-full h-full object-cover opacity-[0.15] mix-blend-luminosity group-hover:scale-105 group-hover:opacity-[0.25] transition-all duration-1000"
+               />
+               <div className="absolute inset-0 bg-gradient-to-t from-[#111] via-[#111]/80 to-transparent" />
             </div>
-            
-            <ChessAccuracyChart />
+
+            <div className="relative z-10 mb-8">
+               <div className="inline-block border border-[#FF4444]/20 bg-[#FF4444]/10 text-[#FF4444] px-4 py-1.5 rounded-full font-mono text-[10px] uppercase tracking-widest mb-6">
+                 Checkmate Covid Charity Exhibition
+               </div>
+               <h4 className="font-clash text-4xl md:text-5xl text-white font-medium tracking-tight mb-4">
+                 He hadn't played chess in over 15 years.
+               </h4>
+               <p className="font-satoshi text-white/60 text-lg leading-relaxed">
+                 Nikhil beat 5-time World Champion Viswanathan Anand with a 98.9% accuracy score.
+               </p>
+            </div>
+
+            <div className="relative z-10 bg-[#050505]/80 backdrop-blur-md rounded-2xl border border-white/5 p-6 w-full">
+              <ChessAccuracyChart />
+            </div>
           </motion.div>
 
-          {/* Right: Narrative */}
-          <div className="space-y-8">
-            <motion.div 
-              className="space-y-2 border-l-2 border-accent-red/50 pl-6"
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-            >
-              <h4 className="font-mono text-sm tracking-widest text-accent-red">ACT I</h4>
-              <p className="font-satoshi text-primary-text">
-                June 13, 2021. 'Checkmate Covid' — online charity chess simultaneous exhibition. Organised by Akshaya Patra Foundation. Viswanathan Anand. Nine games simultaneously. <br/>
-                <span className="text-secondary-text">He won eight easily.</span>
-              </p>
-            </motion.div>
-            
-            <motion.div 
-              className="space-y-2 border-l-2 border-accent-red pl-6"
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-            >
-              <h4 className="font-mono text-sm tracking-widest text-accent-red">ACT II</h4>
-              <p className="font-satoshi text-primary-text">
-                Nikhil won. Accuracy: 98.9%.<br/>
-                His last 30 Chess.com games: between 0.6% and 10.9%. Three novices had beaten him in 4-12 moves. <br/>
-                <span className="text-accent-red">Computer analysis was unambiguous. Chess.com banned his account.</span><br/>
-                <span className="text-secondary-text block mt-2 text-sm italic">
-                  Forbes ran: 'Liar's Chess: Exposing India's Slumdog Billionaire.' GM Pentala Harikrishna: critical. Anand's wife, Aruna: released a statement saying his initial apology 'disrespectfully' implicated Anand. Top grandmasters: piled on.
-                </span>
-              </p>
-            </motion.div>
+          {/* Right panel: Timeline */}
+          <motion.div 
+            className="lg:col-span-7 p-8 md:p-16 flex flex-col justify-center relative z-10"
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+          >
+            <div className="space-y-12">
+              
+              <div className="relative pl-8 before:absolute before:left-0 before:top-4 before:bottom-0 before:w-px before:bg-gradient-to-b before:from-[#D4FF00] before:to-white/10">
+                <div className="absolute left-0 top-3 w-[3px] h-8 bg-[#D4FF00] -translate-x-[1px] shadow-[0_0_10px_rgba(212,255,0,0.5)]" />
+                <span className="font-mono text-[10px] tracking-[0.2em] text-[#D4FF00] uppercase mb-2 block">The Execution</span>
+                <p className="font-satoshi text-xl text-white leading-relaxed mb-4">
+                  Nine games simultaneously. Viswanathan Anand won eight easily. <span className="text-white/50">Nikhil won.</span>
+                </p>
+              </div>
 
-            <motion.div 
-              className="space-y-2 border-l-2 border-accent-chartreuse pl-6"
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-            >
-              <h4 className="font-mono text-sm tracking-widest text-accent-chartreuse">ACT III</h4>
-              <p className="font-satoshi text-primary-text">
-                24 hours after the ban. <br/>
-                <span className="font-semibold text-accent-chartreuse">At Viswanathan Anand's personal request — the account was restored.</span><br/><br/>
-                Nikhil's eventual tweet:<br/>
-                <span className="italic block mb-2">'In hindsight, it was quite silly. Apologies.'</span>
-                <span className="text-secondary-text block">
-                  The man who built a company on radical transparency had a very human moment with it. Anand's grace was more remarkable than Nikhil's mistake.
-                </span>
-              </p>
-            </motion.div>
-          </div>
+              <div className="relative pl-8 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-px before:bg-white/10">
+                <div className="absolute left-0 top-3 w-[3px] h-8 bg-[#FF4444] -translate-x-[1px]" />
+                <span className="font-mono text-[10px] tracking-[0.2em] text-[#FF4444] uppercase mb-2 block">The Fallout</span>
+                <p className="font-satoshi text-xl text-white/80 leading-relaxed mb-6">
+                  His previous 30 games on Chess.com ranged between 0.6% and 10.9%. Three novices had routed him in under 12 moves. 
+                </p>
+                <div className="bg-[#111] p-5 rounded-xl border border-[#FF4444]/20 border-l-[4px] border-l-[#FF4444]">
+                  <p className="font-satoshi text-white/80 text-[15px] leading-relaxed">
+                    Computer analysis was unambiguous. Chess.com banned his account. Forbes ran <span className="font-medium">"Liar's Chess: Exposing India's Slumdog Billionaire."</span> Top grandmasters piled on.
+                  </p>
+                </div>
+              </div>
+
+              <div className="relative pl-8 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-px before:bg-gradient-to-b before:from-white/10 before:to-transparent">
+                <div className="absolute left-0 top-3 w-[3px] h-8 bg-white/40 -translate-x-[1px]" />
+                <span className="font-mono text-[10px] tracking-[0.2em] text-white/40 uppercase mb-2 block">The Resolution</span>
+                <p className="font-satoshi text-xl text-white/80 leading-relaxed mb-6">
+                  24 hours later, <span className="text-white font-medium">at Viswanathan Anand's personal request</span>, the account was restored.
+                </p>
+                <div className="relative">
+                  <span className="absolute -left-6 top-0 text-white/20 font-serif text-5xl">"</span>
+                  <p className="font-satoshi italic text-white/50 text-[17px] leading-relaxed mb-2">
+                    In hindsight, it was quite silly. Apologies.
+                  </p>
+                  <p className="font-satoshi text-[14px] text-white/30 uppercase tracking-widest font-mono mt-4">
+                    — Nikhil Kamath (via X)
+                  </p>
+                </div>
+              </div>
+
+            </div>
+          </motion.div>
 
         </div>
       </div>
 
       {/* Rent vs Own Toggle Controversy */}
-      <div className="container mx-auto px-4 md:px-8 xl:px-16 max-w-6xl">
+      <div className="container mx-auto px-4 md:px-8 xl:px-16 max-w-6xl relative z-10 pb-32">
+        <div className="flex items-center gap-6 mb-16">
+          <span className="text-white/40 font-mono text-[10px] tracking-[0.2em] uppercase shrink-0">The Real Estate Shift</span>
+          <div className="h-px bg-gradient-to-l from-white/20 to-transparent flex-grow" />
+          <h3 className="font-clash text-4xl sm:text-5xl text-white font-medium tracking-tight">The Paradigm</h3>
+        </div>
+
         <motion.div
            initial={{ opacity: 0, y: 30 }}
            whileInView={{ opacity: 1, y: 0 }}
