@@ -5,6 +5,22 @@ import { ChevronDown } from 'lucide-react';
 export default function Hero() {
   return (
     <section className="relative min-h-screen w-full flex items-center pt-24 overflow-hidden">
+      {/* Background Video */}
+      <div className="absolute inset-0 w-full h-full z-0 overflow-hidden pointer-events-none">
+        <video 
+          autoPlay 
+          loop 
+          muted 
+          playsInline 
+          className="absolute top-1/2 left-1/2 w-full h-full object-cover -translate-x-1/2 -translate-y-1/2 grayscale blur-[6px] opacity-40 mix-blend-screen"
+        >
+          <source src="/assets/animation/hero-video.mp4" type="video/mp4" />
+          <source src="/assets/animations/hero-video.mp4" type="video/mp4" />
+        </video>
+        {/* Dark overlay to ensure text readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-background-dark via-background-dark/80 to-background-dark/30" />
+      </div>
+
       {/* Background ambient particles (CSS abstraction) */}
       <div className="absolute inset-x-0 bottom-0 top-32 overflow-hidden pointer-events-none opacity-20">
         {Array.from({ length: 20 }).map((_, i) => (
@@ -36,50 +52,65 @@ export default function Hero() {
         <motion.img 
           src="/assets/images/nikhil-hero-bw-cutout.png" 
           alt="Nikhil Kamath" 
-          className="object-contain object-bottom max-h-[90vh] grayscale opacity-80 mix-blend-lighten"
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 0.8, x: 0 }}
-          transition={{ duration: 1.5, delay: 0.5, ease: "easeOut" }}
+          className="object-contain object-bottom max-h-[90vh] drop-shadow-[0_10px_35px_rgba(0,0,0,0.5)]"
+          initial={{ opacity: 0, x: 50, y: 0 }}
+          animate={{ opacity: 1, x: 0, y: [0, -12, 0] }}
+          transition={{ 
+            opacity: { duration: 1.5, delay: 0.5, ease: "easeOut" },
+            x: { duration: 1.5, delay: 0.5, ease: "easeOut" },
+            y: { duration: 6, repeat: Infinity, ease: "easeInOut", delay: 2 } 
+          }}
         />
       </div>
 
       {/* Content */}
       <div className="relative z-20 container mx-auto px-6 md:px-12 w-full max-w-7xl">
-        <div className="max-w-2xl mt-[-10vh]">
-          <motion.h1 
-            className="text-6xl md:text-8xl font-clash text-primary-text mb-6 leading-tight tracking-tight"
-            initial={{ opacity: 0, y: 30 }}
+        <motion.div 
+          className="max-w-3xl mt-[-5vh]"
+          initial={{ opacity: 1 }}
+          animate={{ y: [0, -8, 0] }}
+          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+        >
+          {/* Pill / Badge placed above headline */}
+          <motion.div 
+            className="inline-flex items-center space-x-3 bg-white/5 border border-white/10 backdrop-blur-md px-5 py-2.5 rounded-full mb-8 shadow-sm"
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.2 }}
           >
-            The line is<br/>the biography.
+            <div className="w-2 h-2 rounded-full bg-[#D4FF00]" />
+            <span className="font-mono text-[11px] md:text-sm tracking-[0.2em] text-gray-300 uppercase">
+              2003 &nbsp;·&nbsp; ₹8,000/mo &nbsp;·&nbsp; Age 17
+            </span>
+          </motion.div>
+
+          <motion.h1 
+            className="text-6xl md:text-[7.5rem] font-clash mb-10 leading-[1.05] tracking-tight"
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <span className="text-white block font-medium">The line is</span>
+            <span className="text-gray-400 font-light italic block -mt-1 md:-mt-3">the biography.</span>
           </motion.h1>
           
-          <motion.p 
-            className="text-lg md:text-2xl font-satoshi text-secondary-text max-w-lg leading-relaxed"
-            initial={{ opacity: 0, y: 20 }}
+          <motion.div 
+            className="max-w-xl"
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.6 }}
+            transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
           >
-            <span className="text-primary-text font-medium">₹8,000 per month to ₹27,000 Crore.</span><br/>
-            No degree. No investors. No advertising.<br/>
-            One decision, compounded, twenty years.
-          </motion.p>
-        </div>
+            <p className="text-lg md:text-xl font-satoshi text-gray-400 leading-relaxed mb-6">
+              From <span className="text-white font-medium">₹8,000 / mo</span> to <span className="text-white font-medium">₹27,000 Cr.</span>
+              <br className="hidden md:block"/> No degree, no investors, no advertising.
+            </p>
+            <p className="text-white font-medium text-xl md:text-2xl tracking-tight flex items-center gap-3">
+              <span className="w-8 h-[1px] bg-[#D4FF00]" />
+              One decision, compounded, twenty years.
+            </p>
+          </motion.div>
+        </motion.div>
       </div>
-
-      {/* The initial line dot label */}
-      <motion.div 
-        className="absolute bottom-32 left-6 md:left-[50%] z-20 flex items-center space-x-4 md:-translate-x-1/2"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 1 }}
-      >
-        <div className="w-4 h-4 rounded-full bg-accent-chartreuse shadow-[0_0_15px_rgba(212,255,0,0.8)] animate-pulse" />
-        <span className="font-mono text-sm tracking-wider text-secondary-text">
-          2003 &nbsp;·&nbsp; ₹8,000/month &nbsp;·&nbsp; Age 17
-        </span>
-      </motion.div>
 
       {/* CTA Scroll */}
       <motion.div 

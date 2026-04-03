@@ -102,3 +102,11 @@ html.lenis, html.lenis body {
   padding-left: 100%;
   animation: marsoftTicker 4s linear 3;
 }
+
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent; 
+}
+* {
+  scrollbar-width: none; 
+}

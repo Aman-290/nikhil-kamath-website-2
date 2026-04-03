@@ -1,175 +1,191 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+﻿import React from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 export default function ThePerson() {
+  const { scrollYProgress } = useScroll();
+  const yBg = useTransform(scrollYProgress, [0, 1], ['0%', '20%']);
+
   return (
-    <section className="relative w-full py-32 z-10 min-h-screen bg-primary-bg overflow-hidden">
+    <section className="relative w-full py-32 z-10 min-h-screen bg-[#0A0A0A] overflow-hidden">
       
-      <div className="container mx-auto px-6 md:px-12 xl:px-24 max-w-7xl">
+      {/* Subtle Background Glow */}
+      <div className="absolute top-0 right-0 w-[50vw] h-[50vw] bg-accent-chartreuse/5 rounded-full blur-[120px] mix-blend-screen pointer-events-none" />
+
+      <div className="container mx-auto px-6 md:px-12 xl:px-24 max-w-[1400px]">
         
         {/* Intro */}
         <motion.div 
-          className="mb-32 max-w-3xl border-l-4 border-accent-chartreuse pl-8"
-          initial={{ opacity: 0, x: -30 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          className="mb-24 md:mb-40 max-w-4xl"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
         >
-          <h2 className="font-clash text-5xl md:text-7xl text-primary-text mb-6">The Person</h2>
-          <p className="font-satoshi text-2xl text-secondary-text">The work behind the numbers.</p>
+          <div className="inline-block px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-8">
+            <span className="font-mono text-xs uppercase tracking-widest text-accent-chartreuse">Behind the Numbers</span>
+          </div>
+          <h2 className="font-clash text-6xl md:text-8xl lg:text-[7rem] text-primary-text mb-6 leading-none tracking-tight">The Person.</h2>
+          <p className="font-satoshi text-2xl md:text-3xl text-secondary-text max-w-2xl leading-relaxed">
+            The routines, the philosophies, and the paradoxes that built him.
+          </p>
         </motion.div>
 
-        {/* The Daily Ritual */}
-        <div className="mb-32 relative">
-          <h3 className="font-clash text-3xl md:text-4xl text-primary-text mb-12">The Daily Ritual</h3>
+        {/* The Daily Ritual - Minimal Scannable Layout */}
+        <div className="mb-40 relative">
+          <h3 className="font-clash text-4xl text-primary-text mb-12 flex items-center gap-4">
+            The Ritual <span className="h-px bg-white/10 flex-1 ml-4" />
+          </h3>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <motion.div className="bg-surface-bg p-8 rounded-2xl border border-white/5" whileHover={{ y: -5 }}>
-              <span className="text-accent-gold font-mono text-xl block mb-4">6:30 AM</span>
-              <p className="font-satoshi text-primary-text mb-2">20 minutes of morning sunlight while reading. Bloomberg. The Print.</p>
-              <p className="text-secondary-text text-sm italic border-l-2 border-white/20 pl-4 mt-4">"The day begins with information, not reaction."</p>
-            </motion.div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             
-            <motion.div className="bg-surface-bg p-8 rounded-2xl border border-white/5" whileHover={{ y: -5 }}>
-              <span className="text-accent-chartreuse font-mono text-xl block mb-4">11:00 AM</span>
-              <p className="font-satoshi text-primary-text mb-2">Black coffee. Nothing else. 16:8 intermittent fasting. No breakfast.</p>
-              <p className="text-secondary-text text-sm italic border-l-2 border-white/20 pl-4 mt-4">"His metabolism is a trading system: disciplined inputs."</p>
-            </motion.div>
-            
-            <motion.div className="bg-surface-bg p-8 rounded-2xl border border-white/5" whileHover={{ y: -5 }}>
-              <span className="text-accent-chartreuse font-mono text-xl block mb-4">1:30 PM & 4:00 PM</span>
-              <p className="font-satoshi text-primary-text mb-2">1:30 PM - Meetings (Stock market analysis mornings).<br/>4:00 PM - Gym.</p>
-              <p className="text-secondary-text text-sm italic border-l-2 border-white/20 pl-4 mt-4">"The body is managed like a portfolio."</p>
-            </motion.div>
-            
-            <motion.div className="bg-surface-bg p-8 rounded-2xl border border-white/5 lg:col-span-2" whileHover={{ y: -5 }}>
-              <span className="text-accent-red font-mono text-xl block mb-4">6:00 PM & 11:30 PM</span>
-              <p className="font-satoshi text-primary-text mb-4">No messages after 6 PM. No devices 1 hour before bed. Magnesium + theanine before sleep.</p>
-              <div className="bg-black/30 p-4 rounded-lg">
-                <p className="font-garamond italic text-lg text-primary-text mb-2">"'I struggle to fall asleep. I'm constantly working to improve my sleep habits.'"</p>
-                <p className="text-secondary-text text-sm">He tracks it. He hasn't solved it. Even billionaires are still optimizing.</p>
+            <motion.div className="bg-white/5 backdrop-blur-sm p-8 rounded-3xl border border-white/5 hover:border-accent-chartreuse/30 transition-colors group flex flex-col justify-between min-h-[250px]">
+              <span className="text-secondary-text font-mono text-sm uppercase tracking-widest group-hover:text-accent-chartreuse transition-colors">6:30 AM</span>
+              <div>
+                <h4 className="text-2xl font-clash text-white mb-2">Sunlight & Data</h4>
+                <p className="font-satoshi text-secondary-text text-sm h-12">20 minutes of morning sun. Bloomberg. The Print.</p>
               </div>
             </motion.div>
+            
+            <motion.div className="bg-white/5 backdrop-blur-sm p-8 rounded-3xl border border-white/5 hover:border-accent-chartreuse/30 transition-colors group flex flex-col justify-between min-h-[250px]">
+              <span className="text-secondary-text font-mono text-sm uppercase tracking-widest group-hover:text-accent-chartreuse transition-colors">11:00 AM</span>
+              <div>
+                <h4 className="text-2xl font-clash text-white mb-2">Fasting State</h4>
+                <p className="font-satoshi text-secondary-text text-sm h-12">Black coffee only. 16:8 intermittent fasting. No breakfast.</p>
+              </div>
+            </motion.div>
+            
+            <motion.div className="bg-white/5 backdrop-blur-sm p-8 rounded-3xl border border-white/5 hover:border-accent-chartreuse/30 transition-colors group flex flex-col justify-between min-h-[250px]">
+              <span className="text-secondary-text font-mono text-sm uppercase tracking-widest group-hover:text-accent-chartreuse transition-colors">1:30 PM & 4:00 PM</span>
+              <div>
+                <h4 className="text-2xl font-clash text-white mb-2">Markets & Muscle</h4>
+                <p className="font-satoshi text-secondary-text text-sm h-12">Deep work on portfolio, followed by the daily gym session.</p>
+              </div>
+            </motion.div>
+            
+            <motion.div className="bg-gradient-to-br from-accent-red/10 to-transparent p-8 rounded-3xl border border-accent-red/20 hover:border-accent-red/40 transition-colors group flex flex-col justify-between min-h-[250px]">
+              <span className="text-accent-red font-mono text-sm uppercase tracking-widest">6:00 PM onwards</span>
+              <div>
+                <h4 className="text-2xl font-clash text-white mb-2">The Shut Down</h4>
+                <p className="font-satoshi text-secondary-text text-sm">No messages. No devices 1 hour before bed. Magnesium + Theanine.</p>
+              </div>
+            </motion.div>
+
           </div>
         </div>
 
-        {/* Library & Tattoos Grid */}
-        <div className="grid lg:grid-cols-2 gap-16 mb-32 items-start">
+        {/* Library & Mind Grid */}
+        <div className="grid lg:grid-cols-12 gap-8 md:gap-16 mb-40 items-center">
           
-          {/* The Library */}
+          {/* The Library (7 cols) */}
           <motion.div 
-            className="space-y-8"
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            className="lg:col-span-7 bg-surface-bg p-10 md:p-14 rounded-[2.5rem] border border-white/5 relative overflow-hidden"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <div className="relative aspect-video rounded-2xl overflow-hidden bg-surface-bg border border-white/5 group">
-              <img src="/assets/images/books-library-500.webp" alt="The Library" className="w-full h-full object-cover mix-blend-luminosity opacity-60 group-hover:opacity-100 transition-opacity duration-700" />
-              <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-                <span className="font-clash text-4xl text-primary-text drop-shadow-xl">500 books.</span>
-              </div>
+            <div className="absolute top-0 right-0 p-12 opacity-5">
+              <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 4h16v15.5a2.5 2.5 0 0 1-2.5 2.5H6.5A2.5 2.5 0 0 1 4 19.5v-15.5z"/></svg>
             </div>
-            <div className="font-satoshi text-lg text-secondary-text leading-relaxed">
-              <p className="mb-4">1-2 per week. Since dropping out.</p>
-              <ul className="space-y-2 mb-6">
-                <li><span className="text-primary-text">Nassim Nicholas Taleb:</span> anti-fragility, randomness.</li>
-                <li><span className="text-primary-text">Peter Thiel:</span> zero-to-one thinking, contrarianism.</li>
-                <li><span className="text-primary-text">Ram Dass:</span> ego dissolution, the present moment.</li>
-              </ul>
-              <p className="italic font-garamond text-xl text-primary-text mb-4">An unusual triad for a derivatives trader.<br/>The man contains multitudes.</p>
-              <div className="border-l-2 border-white/20 pl-4 py-2 mt-4 text-primary-text font-medium">
-                'Reading extensively allowed me to compensate for my lack of formal education.'<br/>
-                <span className="text-accent-chartreuse text-sm uppercase tracking-widest mt-2 block font-normal">He compensated generously.</span>
+            
+            <span className="text-accent-chartreuse font-mono text-sm uppercase tracking-widest mb-6 block">The Library</span>
+            <div className="flex items-baseline gap-4 mb-8">
+              <h3 className="font-clash text-7xl md:text-[6rem] text-primary-text leading-none">500+</h3>
+              <span className="font-clash text-2xl text-secondary-text">Books</span>
+            </div>
+            
+            <p className="font-satoshi text-xl text-primary-text mb-10 max-w-lg leading-relaxed">
+              1-2 per week since dropping out. Reading was his substitute for formal education.
+            </p>
+            
+            <div className="grid sm:grid-cols-3 gap-6 font-satoshi text-sm">
+              <div className="border-t border-white/10 pt-4">
+                <span className="text-primary-text block font-medium mb-1">Nassim Taleb</span>
+                <span className="text-secondary-text">Anti-fragility & randomness.</span>
+              </div>
+              <div className="border-t border-white/10 pt-4">
+                <span className="text-primary-text block font-medium mb-1">Peter Thiel</span>
+                <span className="text-secondary-text">Zero-to-one thinking.</span>
+              </div>
+              <div className="border-t border-white/10 pt-4">
+                <span className="text-primary-text block font-medium mb-1">Ram Dass</span>
+                <span className="text-secondary-text">Ego dissolution.</span>
               </div>
             </div>
           </motion.div>
 
-          {/* The Tattoos */}
-          <div className="space-y-6">
-            <h3 className="font-clash text-3xl text-primary-text">The Tattoos</h3>
-            <p className="text-sm font-mono text-secondary-text uppercase tracking-widest mb-4">Hover to reveal</p>
+          {/* The Tattoos (5 cols) */}
+          <div className="lg:col-span-5 space-y-4">
+            <h3 className="font-clash text-3xl text-primary-text mb-6">Ink & Philosophy</h3>
             
             {/* Wrist */}
-            <div className="group perspective h-24 w-full">
-              <div className="relative preserve-3d group-hover:my-rotate-y-180 w-full h-full duration-1000">
-                <div className="absolute backface-hidden border-2 border-white/10 w-full h-full rounded-xl bg-surface-bg flex items-center px-8">
-                  <span className="font-mono text-secondary-text uppercase tracking-widest text-xs absolute top-2 right-4">Left Wrist</span>
-                  <span className="font-garamond text-3xl text-primary-text">Shalom</span>
-                </div>
-                <div className="absolute my-rotate-y-180 backface-hidden border-2 border-accent-gold/50 w-full h-full rounded-xl bg-accent-gold/10 flex items-center px-8">
-                  <p className="font-satoshi text-primary-text">Peace. In two languages. On the wrist that executes the trade.</p>
-                </div>
+            <div className="group relative w-full h-24 rounded-2xl bg-white/5 border border-white/10 overflow-hidden cursor-default flex items-center px-8">
+              <div className="relative z-10 w-full flex justify-between items-center transition-transform duration-500 group-hover:-translate-y-full">
+                <span className="font-garamond text-3xl text-white">Shalom</span>
+                <span className="font-mono text-secondary-text uppercase tracking-widest text-[10px]">Left Wrist</span>
+              </div>
+              <div className="absolute inset-0 z-20 flex items-center px-8 bg-accent-gold/10 backdrop-blur-md translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+                <p className="font-satoshi text-primary-text text-sm">Peace in two languages. On the wrist that executes trades.</p>
               </div>
             </div>
 
-            {/* Arm - Easter Egg 7 */}
-            <div 
-              className="group perspective h-24 w-full cursor-help"
-            >
-              <div className="relative preserve-3d group-hover:my-rotate-y-180 w-full h-full duration-1000">
-                <div className="absolute backface-hidden border-2 border-white/10 w-full h-full rounded-xl bg-surface-bg flex items-center px-8">
-                  <span className="font-mono text-secondary-text uppercase tracking-widest text-xs absolute top-2 right-4">Right Arm</span>
-                  <span className="font-garamond text-3xl text-primary-text tracking-widest uppercase font-bold">Be Here Now</span>
-                </div>
-                <div className="absolute my-rotate-y-180 backface-hidden border-2 border-accent-chartreuse/50 w-full h-full rounded-xl bg-accent-chartreuse/10 flex items-center px-8">
-                  <p className="font-satoshi text-primary-text">Ram Dass. The man who studied Taleb and Thiel also tattooed a spiritual mantra on his forearm. <span className="text-[10px] uppercase font-mono block mt-1 opacity-50 relative z-50">Hold to apply ink...</span></p>
-                </div>
+            {/* Arm */}
+            <div className="group relative w-full h-24 rounded-2xl bg-white/5 border border-white/10 overflow-hidden cursor-default flex items-center px-8">
+              <div className="relative z-10 w-full flex justify-between items-center transition-transform duration-500 group-hover:-translate-y-full">
+                <span className="font-garamond text-2xl text-white tracking-widest uppercase font-bold">Be Here Now</span>
+                <span className="font-mono text-secondary-text uppercase tracking-widest text-[10px]">Right Arm</span>
+              </div>
+              <div className="absolute inset-0 z-20 flex items-center px-8 bg-accent-chartreuse/10 backdrop-blur-md translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+                <p className="font-satoshi text-primary-text text-sm">Ram Dass mantra. A reminder to stay present.</p>
               </div>
             </div>
 
             {/* Chest */}
-            <div className="group perspective h-32 w-full">
-              <div className="relative preserve-3d group-hover:my-rotate-y-180 w-full h-full duration-1000">
-                <div className="absolute backface-hidden border-2 border-white/10 w-full h-full rounded-xl bg-surface-bg flex flex-col justify-center px-8">
-                  <span className="font-mono text-secondary-text uppercase tracking-widest text-xs absolute top-2 right-4">Across Chest / Back</span>
-                  <span className="font-clash text-2xl text-primary-text">The Golden Rule</span>
-                </div>
-                <div className="absolute my-rotate-y-180 backface-hidden border-2 border-white/30 w-full h-full rounded-xl bg-white/5 flex flex-col justify-center px-8">
-                  <p className="font-garamond italic text-lg text-primary-text mb-1">"'Don't do unto others as you wouldn't have others do unto you.'"</p>
-                  <p className="font-satoshi text-sm text-secondary-text">He calls it: 'the most simplistic way of gauging morality.'</p>
-                </div>
+            <div className="group relative w-full h-24 rounded-2xl bg-white/5 border border-white/10 overflow-hidden cursor-default flex items-center px-8">
+              <div className="relative z-10 w-full flex justify-between items-center transition-transform duration-500 group-hover:-translate-y-full">
+                <span className="font-clash text-xl text-white">The Golden Rule</span>
+                <span className="font-mono text-secondary-text uppercase tracking-widest text-[10px]">Chest/Back</span>
+              </div>
+              <div className="absolute inset-0 z-20 flex items-center px-8 bg-white/10 backdrop-blur-md translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+                <p className="font-satoshi text-primary-text text-sm">"Don't do unto others..." His baseline for morality.</p>
               </div>
             </div>
 
           </div>
         </div>
 
-        {/* Hobbies, Fragrance, Insecurity */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          
-          <motion.div className="bg-surface-bg border border-white/5 p-8 rounded-2xl" whileHover={{ y: -5 }}>
-            <h4 className="font-clash text-2xl text-primary-text mb-4">The Hobbies</h4>
-            <ul className="space-y-3 font-satoshi text-sm text-secondary-text">
-              <li><span className="text-primary-text">Painting & Guitar.</span> (AR Rahman brought that out of him)</li>
-              <li><span className="text-primary-text">Vintage watch collecting.</span> Not for status, for stories.</li>
-              <li><span className="text-primary-text">Two Labradors:</span> Chase and Grace.</li>
-              <li><span className="text-primary-text">Up to 10 days</span> a month in Goa.</li>
-            </ul>
-          </motion.div>
-
-          <motion.div className="bg-surface-bg border border-white/5 p-8 rounded-2xl flex flex-col justify-center text-center" whileHover={{ y: -5 }}>
-            <span className="text-secondary-text font-mono text-xs uppercase tracking-widest block mb-4">The Fragrance</span>
-            <h4 className="font-garamond italic text-3xl text-primary-text mb-2">Tom Ford Ombré Leather.</h4>
-            <p className="font-satoshi text-secondary-text text-sm">For evening meetings. The stealth-wealth aesthetic extends to scent.</p>
-          </motion.div>
-
-          <motion.div className="bg-gradient-to-br from-[#1A1F2E] to-black border border-accent-red/20 p-8 rounded-2xl lg:col-span-1 md:col-span-2" whileHover={{ y: -5 }}>
-            <h4 className="font-clash text-2xl text-accent-red mb-4">The Insecurity</h4>
-            <div className="space-y-4 font-satoshi text-sm text-primary-text leading-relaxed">
-              <p>Despite everything, he never stopped feeling like the dropout.</p>
-              <p className="italic border-l border-white/20 pl-4 py-2 text-secondary-text pr-4">"I'm still that guy who works 85% of the day and lives with the insecurity of: What if it's taken from me? I think I grew up like that — insecure, anxious. I am even today."</p>
-              <p className="font-medium text-accent-red/80 pt-2 border-t border-white/10">The ₹27,000 Crore didn't change that. Maybe it shouldn't.</p>
+        {/* The Man Box */}
+        <motion.div 
+          className="relative bg-[#D4FF00] rounded-[2.5rem] p-12 md:p-20 overflow-hidden mb-0"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <div className="relative z-10 grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h4 className="font-clash text-5xl md:text-6xl text-black mb-px leading-none">More than</h4>
+              <h4 className="font-clash text-5xl md:text-6xl text-black mb-6 leading-none">just markets.</h4>
+              <p className="font-satoshi text-xl text-black/70 mb-8 max-w-sm">
+                Up to 10 days a month in Goa. Vintage watch collector (for stories, not status). Proud owner of two Labradors: Chase and Grace.
+              </p>
+              <div className="inline-flex items-center gap-3 bg-black/5 border border-black/10 rounded-full px-5 py-2.5">
+                <span className="text-black font-mono text-xs uppercase tracking-widest font-bold">Signature Fragrance:</span>
+                <span className="text-black/70 font-satoshi text-sm">Tom Ford Ombré Leather</span>
+              </div>
             </div>
-          </motion.div>
+            
+            <div className="bg-black/90 p-10 rounded-3xl border border-white/10 shadow-2xl">
+              <span className="text-[#D4FF00] font-mono text-xs uppercase tracking-widest mb-6 block">The Insecurity</span>
+              <p className="font-garamond italic text-2xl lg:text-3xl text-white leading-snug mb-6">
+                "We get a lot of flak for not being good-looking people. Even our wives tell us we're ugly."
+              </p>
+              <p className="font-satoshi text-gray-400 text-sm">
+                Yes, those were his real words in an interview. <br/>Brutal honesty, no filter.
+              </p>
+            </div>
+          </div>
+        </motion.div>
 
-        </div>
       </div>
-
-      <style dangerouslySetInnerHTML={{ __html: `
-        .perspective { perspective: 1000px; }
-        .preserve-3d { transform-style: preserve-3d; }
-        .backface-hidden { backface-visibility: hidden; }
-        .my-rotate-y-180 { transform: rotateY(180deg); }
-      `}} />
     </section>
   );
 }

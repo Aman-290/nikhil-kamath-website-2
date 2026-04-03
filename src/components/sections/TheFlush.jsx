@@ -38,26 +38,26 @@ export default function TheFlush() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           
           {/* Visuals */}
-          <div className="order-2 lg:order-1 relative h-96 flex items-center justify-center">
+          <div className="order-2 lg:order-1 relative h-[30rem] md:h-[40rem] flex items-center justify-center">
             {/* Lottie Background */}
-            <div className="absolute inset-0 flex items-center justify-center opacity-30">
+            <div className="absolute inset-0 flex items-center justify-center opacity-80 mix-blend-screen drop-shadow-[0_0_30px_rgba(255,255,255,0.1)]">
               {flushAnimation && (
-                <LottiePlayer animationData={flushAnimation} loop={!isEasterEggTriggered} className="w-full h-full max-w-sm" />
+                <LottiePlayer animationData={flushAnimation} loop={!isEasterEggTriggered} className="w-full h-full max-w-[500px]" />
               )}
             </div>
 
             {/* Prop */}
             <motion.div 
               className="relative z-10 cursor-pointer"
-              animate={isEasterEggTriggered ? { rotate: 720, scale: 0, opacity: 0 } : { translateY: [-10, 10, -10], rotate: [-2, 2, -2] }}
+              animate={isEasterEggTriggered ? { rotate: 720, scale: 0, opacity: 0 } : { translateY: [-15, 15, -15], rotate: [-3, 3, -3] }}
               transition={
                 isEasterEggTriggered 
                 ? { duration: 1.5, ease: "anticipate" }
-                : { duration: 4, repeat: Infinity, ease: "easeInOut" }
+                : { duration: 5, repeat: Infinity, ease: "easeInOut" }
               }
               onClick={handlePhoneClick}
             >
-              <img src="/assets/props/retro-cellphone-pixel.png" alt="Retro Cellphone" className="h-48 drop-shadow-2xl" />
+              <img src="/assets/props/retro-cellphone-pixel.png" alt="Retro Cellphone" className="h-64 md:h-96 drop-shadow-[0_20px_50px_rgba(0,0,0,0.8)] filter brightness-110" />
             </motion.div>
 
             {/* Easter Egg Content */}

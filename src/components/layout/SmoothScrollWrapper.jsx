@@ -35,5 +35,6 @@ export default function SmoothScrollWrapper({ children }) {
     };
   }, []);
 
-  return <>{children}</>;
+  // Wrap with strict max-width and hidden x overflow
+  return <div className="w-full max-w-[100vw] overflow-x-hidden overflow-y-clip">{children}</div>;
 }

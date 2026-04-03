@@ -5,6 +5,7 @@ import EasterEggManager from './components/layout/EasterEggManager';
 import ChartSpine from './components/chart/ChartSpine';
 import Footer from './components/layout/Footer';
 import NotFoundFlush from './components/layout/NotFoundFlush';
+import TradingScrollbar from './components/layout/TradingScrollbar';
 
 // Sections
 const Preloader = lazy(() => import('./components/sections/Preloader'));
@@ -50,6 +51,7 @@ function App() {
   return (
     <EasterEggManager>
       <SmoothScrollWrapper>
+        <TradingScrollbar />
         <NoiseOverlay />
         <Suspense fallback={null}>
           <TheMatriarch />

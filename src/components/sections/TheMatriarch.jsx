@@ -16,10 +16,11 @@ export default function TheMatriarch() {
     <AnimatePresence>
       <motion.div 
         className="fixed inset-0 z-[100] bg-[#1a140d] text-[#e8dcc4] overflow-y-auto"
+        data-lenis-prevent
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        transition={{ duration: 1.5 }}
+        transition={{ duration: 0.5 }}
       >
         <button 
           onClick={() => setIsOpen(false)}
@@ -43,53 +44,40 @@ export default function TheMatriarch() {
         <div className="relative z-10 container mx-auto px-6 md:px-12 py-32 max-w-4xl min-h-screen flex flex-col justify-center">
           
           <motion.h2 
-            className="font-clash text-6xl md:text-8xl mb-24 text-[#D4FF00]/80 drop-shadow-md"
+            className="font-clash text-6xl md:text-8xl mb-40 mt-32 text-[#D4FF00]/80 drop-shadow-md"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1, duration: 1 }}
+            transition={{ delay: 0.2, duration: 1 }}
           >
             Before Zerodha.
           </motion.h2>
 
-          <div className="space-y-8 font-garamond text-2xl md:text-3xl leading-relaxed max-w-2xl">
-            <RevealLine delay={2}>Before the podcast.</RevealLine>
-            <RevealLine delay={3}>Before the pledge.</RevealLine>
-            <RevealLine delay={4}>Before ₹27,000 Crore.</RevealLine>
+          <div className="space-y-40 pb-64 font-garamond text-3xl md:text-4xl leading-relaxed max-w-3xl border-l-2 border-[#D4FF00]/20 pl-8 md:pl-16">
+            <RevealLine>Before the podcast.</RevealLine>
+            <RevealLine>Before the pledge.</RevealLine>
+            <RevealLine>Before ₹27,000 Crore.</RevealLine>
             
-            <div className="h-8" />
+            <RevealLine className="font-clash text-4xl md:text-5xl text-white">There was a woman with ₹500,<br/>a flower basket, and an appointment at Wipro.</RevealLine>
             
-            <RevealLine delay={6}>There was a woman with ₹500, a flower basket, and an appointment at Wipro.</RevealLine>
+            <RevealLine className="font-clash text-5xl md:text-7xl text-[#D4FF00]">Revathi Kamath.</RevealLine>
             
-            <div className="h-8" />
-            <RevealLine delay={8} className="font-clash text-4xl md:text-6xl text-white">Revathi Kamath.</RevealLine>
-            <div className="h-8" />
+            <RevealLine>Trained under Veena Venkatagiriyappa since childhood. Her day began with the Veena. Music before the market.</RevealLine>
             
-            <RevealLine delay={10}>Trained under Veena Venkatagiriyappa since childhood. Her day began with the Veena. Music before the market.</RevealLine>
+            <RevealLine>She started a flower shop in Jayanagar for ₹500 a month. Borrowed ₹5,000 from a friend. Walked into Wipro with a floral arrangement. Left with a ₹45,000 contract.</RevealLine>
             
-            <div className="h-4" />
+            <RevealLine>Grew Calyx into a multi-crore event company. HP. Bosch. Leela Palace.</RevealLine>
             
-            <RevealLine delay={12}>She started a flower shop in Jayanagar for ₹500 a month. Borrowed ₹5,000 from a friend. Walked into Wipro with a floral arrangement. Left with a ₹45,000 contract.</RevealLine>
+            <RevealLine>Then landscaping. Chinnaswamy Stadium. Intel. CBRE.</RevealLine>
             
-            <RevealLine delay={14}>Grew Calyx into a multi-crore event company. HP. Bosch. Leela Palace.</RevealLine>
+            <RevealLine>Then environment. One lakh trees planted. Lake rejuvenation. Appointed 7th Director of Rally For Rivers.</RevealLine>
             
-            <RevealLine delay={16}>Then landscaping. Chinnaswamy Stadium. Intel. CBRE.</RevealLine>
+            <RevealLine>She went viral on Reddit in 2025. Playing the Veena at Rama Mandira. Her hands shook with love for the instrument next to an altar worth thousands of crores.</RevealLine>
             
-            <RevealLine delay={18}>Then environment. One lakh trees planted. Lake rejuvenation. Appointed 7th Director of Rally For Rivers.</RevealLine>
+            <RevealLine>She is currently writing her autobiography.<br/>Her Instagram bio: <span className="italic block mt-4 text-[#D4FF00]">'Environmentalist and Veena player.'</span></RevealLine>
             
-            <div className="h-8" />
+            <RevealLine>No mention of her sons.<br/>One of them is worth $3.3 billion.</RevealLine>
             
-            <RevealLine delay={20}>She went viral on Reddit in 2025. Playing the Veena at Rama Mandira. Her hands shook with love for the instrument next to an altar worth thousands of crores.</RevealLine>
-            
-            <div className="h-8" />
-            
-            <RevealLine delay={22}>She is currently writing her autobiography.</RevealLine>
-            <RevealLine delay={23}>Her Instagram bio: <span className="italic">'Environmentalist and Veena player.'</span></RevealLine>
-            <RevealLine delay={25}>No mention of her sons.</RevealLine>
-            <RevealLine delay={26}>One of them is worth $3.3 billion.</RevealLine>
-            
-            <div className="h-12" />
-            
-            <RevealLine delay={28} className="text-[#D4FF00]">
+            <RevealLine className="text-[#D4FF00] font-clash text-4xl md:text-6xl pt-20">
               The entrepreneur in this family did not skip a generation.<br/>
               It began with her.
             </RevealLine>
@@ -101,12 +89,13 @@ export default function TheMatriarch() {
   );
 }
 
-function RevealLine({ children, delay, className = "" }) {
+function RevealLine({ children, className = "" }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay, duration: 1.5, ease: "easeOut" }}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-20px" }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
       className={className}
     >
       {children}

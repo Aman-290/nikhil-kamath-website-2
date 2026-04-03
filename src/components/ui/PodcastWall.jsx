@@ -29,9 +29,11 @@ const SPOTIFY_LINK = 'https://open.spotify.com';
 export default function PodcastWall() {
   const containerRef = useRef(null);
   const scrollWrapperRef = useRef(null);
-  const bryanTriggeredRef = useRef(false);
+  const trackRef = useRef(null);
+  const isDragging = useRef(false);
 
   const [isDesktop, setIsDesktop] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
   const { unlockEgg, setBryanPopupActive } = useEasterEggStore();
 
   useEffect(() => {
@@ -42,47 +44,64 @@ export default function PodcastWall() {
   }, []);
 
   useEffect(() => {
-    if (!isDesktop || !containerRef.current || !scrollWrapperRef.current) return undefined;
-
-    const getScrollAmount = () => {
-      const wrapperWidth = scrollWrapperRef.current.scrollWidth;
-      return -(wrapperWidth - window.innerWidth);
+    const handlePointerMove = (e) => {
+      if (!isDragging.current || !trackRef.current || !scrollWrapperRef.current) return;
+      const rect = trackRef.current.getBoundingClientRect();
+      const clickX = e.clientX - rect.left;
+      const percentage = Math.max(0, Math.min(1, clickX / rect.width));
+      const { scrollWidth, clientWidth } = scrollWrapperRef.current;
+      scrollWrapperRef.current.scrollTo({ left: percentage * (scrollWidth - clientWidth), behavior: 'auto' });
     };
 
-    const bryanIndex = guests.findIndex((guest) => guest.name === 'Bryan Johnson');
-    const bryanProgress = bryanIndex / Math.max(guests.length - 1, 1);
+    const handlePointerUp = () => {
+      isDragging.current = false;
+    };
 
-    const tween = gsap.to(scrollWrapperRef.current, {
-      x: getScrollAmount,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: 'top top',
-        end: () => `+=${getScrollAmount() * -1}`,
-        pin: true,
-        scrub: 1,
-        invalidateOnRefresh: true,
-        onUpdate: (self) => {
-          if (bryanTriggeredRef.current) return;
-          const speed = Math.abs(self.getVelocity());
-          const nearBryan = Math.abs(self.progress - bryanProgress) < 0.1;
+    window.addEventListener('pointermove', handlePointerMove);
+    window.addEventListener('pointerup', handlePointerUp);
+    
+    return () => {
+      window.removeEventListener('pointermove', handlePointerMove);
+      window.removeEventListener('pointerup', handlePointerUp);
+    };
+  }, []);
 
-          if (nearBryan && speed > 450) {
-            bryanTriggeredRef.current = true;
-            unlockEgg(EGG_IDS.BRYAN_JOHNSON);
-            setBryanPopupActive(true);
-          }
-        },
-      },
+  const handleScrollDir = (direction) => {
+    if (!scrollWrapperRef.current) return;
+    const scrollAmount = window.innerWidth * 0.5;
+    scrollWrapperRef.current.scrollBy({
+      left: direction === 'left' ? -scrollAmount : scrollAmount,
+      behavior: 'smooth'
+    });
+  };
+
+  // Check for Bryan Johnson easter egg on manual scroll and update progress bar
+  const onContainerScroll = () => {
+    if (!scrollWrapperRef.current) return;
+
+    const { scrollLeft, scrollWidth, clientWidth } = scrollWrapperRef.current;
+    const maxScroll = scrollWidth - clientWidth;
+    setScrollProgress(maxScroll > 0 ? scrollLeft / maxScroll : 0);
+
+    const cards = scrollWrapperRef.current.querySelectorAll('article');
+    let bryanCard = null;
+    
+    cards.forEach(card => {
+      if (card.getAttribute('data-guest-name') === 'Bryan Johnson') {
+        bryanCard = card;
+      }
     });
 
-    return () => {
-      tween.kill();
-      if (tween.scrollTrigger) {
-        tween.scrollTrigger.kill();
+    if (bryanCard) {
+      const rect = bryanCard.getBoundingClientRect();
+      const inView = rect.left >= 0 && rect.right <= window.innerWidth;
+      
+      if (inView) {
+        unlockEgg(EGG_IDS.BRYAN_JOHNSON);
+        setBryanPopupActive(true);
       }
-    };
-  }, [isDesktop, setBryanPopupActive, unlockEgg]);
+    }
+  };
 
   if (!isDesktop) {
     return (
@@ -110,19 +129,29 @@ export default function PodcastWall() {
   }
 
   return (
-    <section ref={containerRef} className="relative w-full h-screen bg-[#0A0A0F] overflow-hidden flex flex-col justify-center border-y border-white/5">
-      <div className="absolute top-12 md:top-20 left-6 md:left-12 z-20 max-w-xl bg-primary-bg/50 backdrop-blur-sm p-5 rounded-2xl border border-white/5 pointer-events-none">
-        <h2 className="font-clash text-4xl text-primary-text mb-3">The Guest Wall</h2>
-        <p className="font-satoshi text-secondary-text text-sm">
-          Deep discussions of complex themes, supported by data and facts, especially contrarian ones.
-        </p>
+    <section className="relative w-full min-h-[80vh] md:min-h-screen bg-[#0A0A0F] border-y border-white/5 flex flex-col justify-start pt-12 md:pt-20 pb-16 overflow-hidden group/section">
+      
+      {/* Title */}
+      <div className="relative z-20 px-6 md:px-12 mb-8 md:mb-12 shrink-0">
+        <div className="max-w-xl pr-4">
+          <h2 className="font-clash text-4xl md:text-5xl lg:text-7xl text-[#D4FF00] mb-4 drop-shadow-lg">The Guest Wall</h2>
+          <p className="font-satoshi text-gray-300 text-sm md:text-lg">
+            Deep discussions of complex themes, supported by data and facts, especially contrarian ones.
+          </p>
+        </div>
       </div>
 
-      <div ref={scrollWrapperRef} className="flex flex-row items-center h-full pt-20 pl-8 md:pl-16 w-max shrink-0 space-x-8 will-change-transform pb-12">
+      {/* Horizontal Scrolling Wrapper */}
+      <div 
+        ref={scrollWrapperRef} 
+        onScroll={onContainerScroll}
+        className="flex flex-row items-center flex-1 pl-6 md:pl-12 pr-[40vw] overflow-x-auto space-x-6 md:space-x-8 pb-12 snap-x snap-mandatory scrollbar-hide w-full shadow-inner"
+        style={{ scrollBehavior: 'smooth' }}
+      >
         {guests.map((guest) => (
           <article
             key={guest.name}
-            className="w-[20vw] min-w-[260px] max-w-[320px] h-[62vh] shrink-0 relative rounded-2xl overflow-hidden group cursor-pointer border border-white/10"
+            className="w-[75vw] md:w-[25vw] min-w-[280px] md:min-w-[340px] max-w-[420px] h-[50vh] md:h-[65vh] shrink-0 relative rounded-3xl overflow-hidden group cursor-pointer border border-white/10 snap-center"
             data-guest-name={guest.name}
           >
             <img
@@ -158,18 +187,62 @@ export default function PodcastWall() {
           </article>
         ))}
 
-        <div className="w-[560px] shrink-0 bg-surface-bg border border-white/5 rounded-2xl p-10 mx-8 flex flex-col justify-center">
-          <span className="text-accent-red font-mono text-sm tracking-widest uppercase mb-4 block">The Spoof</span>
-          <h3 className="font-clash text-4xl text-primary-text mb-6">"Have you ever built inner peace?"</h3>
-          <div className="font-satoshi text-secondary-text text-lg space-y-4">
+        <div className="w-[85vw] md:w-[600px] shrink-0 bg-[#0A0A0F]/80 backdrop-blur-lg border border-white/10 rounded-3xl p-8 md:p-12 mx-4 md:mr-32 flex flex-col justify-center snap-center">
+          <span className="text-[#EB5757] font-mono text-sm tracking-widest uppercase mb-4 block">The Spoof</span>
+          <h3 className="font-clash text-4xl md:text-5xl text-white mb-8">"Have you ever built inner peace?"</h3>
+          <div className="font-satoshi text-gray-400 text-lg md:text-xl space-y-6">
             <p>In 2025, a viral spoof imagined the questions Nikhil should have asked Elon Musk.</p>
-            <div className="bg-black/30 p-6 rounded-lg text-primary-text italic border-l-2 border-accent-red">
-              <p>If rockets escape Earth's gravity, how does one escape emotional gravity?</p>
+            <div className="bg-black/50 p-6 md:p-8 rounded-2xl text-white italic border-l-[3px] border-[#EB5757] shadow-xl">
+              <p className="mb-4">If rockets escape Earth's gravity, how does one escape emotional gravity?</p>
               <p>If Mars doesn't have traffic, do you think people will still be late?</p>
             </div>
-            <p>Nikhil reacted publicly. He shared it. He appreciated it.</p>
+            <p className="text-[#D4FF00] font-medium">Nikhil reacted publicly. He shared it. He appreciated it.</p>
           </div>
         </div>
+      </div>
+
+      {/* Interactive Bottom Scroll Controls */}
+      <div className="absolute bottom-8 md:bottom-12 left-1/2 -translate-x-1/2 flex items-center space-x-3 md:space-x-5 z-50">
+        
+        {/* Left Arrow Button */}
+        <button 
+          onClick={() => handleScrollDir('left')} 
+          className="w-10 h-10 md:w-12 md:h-12 shrink-0 rounded-full flex items-center justify-center border border-white/20 hover:border-[#D4FF00]/50 hover:bg-[#D4FF00]/10 transition-all text-white hover:text-[#D4FF00] backdrop-blur-md active:scale-95"
+          aria-label="Scroll left"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+
+        {/* Draggable Progress Bar */}
+        <div 
+          ref={trackRef}
+          className="relative w-[45vw] md:w-[350px] h-2.5 md:h-3 bg-white/10 rounded-full overflow-hidden backdrop-blur-sm cursor-pointer shadow-lg border border-white/5"
+          onPointerDown={(e) => {
+            isDragging.current = true;
+            if (!scrollWrapperRef.current) return;
+            const rect = e.currentTarget.getBoundingClientRect();
+            const clickX = e.clientX - rect.left;
+            const percentage = Math.max(0, Math.min(1, clickX / rect.width));
+            const { scrollWidth, clientWidth } = scrollWrapperRef.current;
+            scrollWrapperRef.current.scrollTo({ left: percentage * (scrollWidth - clientWidth), behavior: 'smooth' });
+            e.preventDefault(); 
+          }}
+        >
+          <div 
+            className="absolute left-0 top-0 h-full bg-[#D4FF00] shadow-[0_0_15px_rgba(212,255,0,0.8)] rounded-full transition-all duration-75 ease-out"
+            style={{ width: `${Math.max(5, scrollProgress * 100)}%` }}
+          />
+        </div>
+
+        {/* Right Arrow Button */}
+        <button 
+          onClick={() => handleScrollDir('right')} 
+          className="w-10 h-10 md:w-12 md:h-12 shrink-0 rounded-full flex items-center justify-center border border-white/20 hover:border-[#D4FF00]/50 hover:bg-[#D4FF00]/10 transition-all text-white hover:text-[#D4FF00] backdrop-blur-md active:scale-95"
+          aria-label="Scroll right"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+
       </div>
     </section>
   );
