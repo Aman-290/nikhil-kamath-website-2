@@ -58,8 +58,8 @@ export default function ChessAccuracyChart() {
   };
 
   return (
-    <div className="w-full h-[250px] relative mt-8">
-      <ResponsiveContainer width="100%" height="100%">
+    <div className="w-full h-[250px] relative mt-8" style={{ minWidth: 0, minHeight: 0 }}>
+      <ResponsiveContainer width="99%" height="100%" minWidth={0} minHeight={0}>
         <BarChart
           data={chartData}
           margin={{ top: 20, right: 0, left: 0, bottom: 20 }}

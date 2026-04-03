@@ -12,7 +12,7 @@ export default function Hero() {
           loop 
           muted 
           playsInline 
-          className="absolute top-1/2 left-1/2 w-full h-full object-cover -translate-x-1/2 -translate-y-1/2 blur-[6px] opacity-40 mix-blend-screen"   
+          className="absolute top-1/2 left-1/2 w-full h-full object-cover -translate-x-1/2 -translate-y-1/2 blur-[6px] opacity-40 mix-blend-screen grayscale"   
         >
           <source src="/assets/animation/hero-video.mp4" type="video/mp4" />
           <source src="/assets/animations/hero-video.mp4" type="video/mp4" />
