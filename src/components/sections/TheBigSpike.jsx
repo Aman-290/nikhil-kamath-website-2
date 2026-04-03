@@ -19,7 +19,7 @@ export default function TheBigSpike() {
       <div className="absolute inset-0 bg-gradient-to-b from-white/[0.02] to-transparent pointer-events-none" />
 
       {/* Intro Blackout Moment */}
-      <div className="min-h-[120vh] flex flex-col items-center justify-center text-center relative px-6 py-32">
+      <div className="min-h-[60vh] flex flex-col items-center justify-center text-center relative px-6 py-16">
         <div className="absolute top-[15%] left-1/2 -translate-x-1/2 opacity-20 pointer-events-none mix-blend-screen filter blur-[2px]">
            {coffeeAnim && <LottiePlayer animationData={coffeeAnim} loop={false} className="w-64 h-64" />}
         </div>
@@ -45,7 +45,7 @@ export default function TheBigSpike() {
             </h2>
           </div>
 
-          <div className="mt-24 pt-16 flex flex-col items-center justify-center gap-8">
+          <div className="mt-12 pt-8 flex flex-col items-center justify-center gap-8">
              <div className="w-[1px] h-32 bg-gradient-to-b from-[#D4FF00] to-transparent" />
           </div>
         </motion.div>
