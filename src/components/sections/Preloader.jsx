@@ -5,10 +5,19 @@ import RupeeCounter from '../ui/RupeeCounter';
 export default function Preloader({ onComplete }) {
   const [phase, setPhase] = useState('counting'); // counting, text, dissolving
   const [showSkip, setShowSkip] = useState(false);
+  const isVideoLoaded = React.useRef(false);
 
   useEffect(() => {
-    // Show skip after 2 seconds
-    const skipTimer = setTimeout(() => setShowSkip(true), 2000);
+    const videoUrl = '/assets/animations/hero-video.mp4';
+    
+    // Start background loading of hero video
+    fetch(videoUrl)
+      .then(response => response.blob())
+      .then(() => { isVideoLoaded.current = true; })
+      .catch(() => { isVideoLoaded.current = true; }); // Fallback
+      
+    // Show skip after 3 seconds
+    const skipTimer = setTimeout(() => setShowSkip(true), 3000);
     return () => clearTimeout(skipTimer);
   }, []);
 
@@ -17,11 +26,27 @@ export default function Preloader({ onComplete }) {
     setTimeout(() => {
       setPhase('text');
       
-      // Keep text on screen for 4 seconds, then dissolve
-      setTimeout(() => {
-        setPhase('dissolving');
-        setTimeout(onComplete, 1000); // 1s dissolve transition
-      }, 4000);
+      let forceFail = false;
+      const minReadTime = new Promise(resolve => setTimeout(resolve, 3000));
+      
+      const checkVideoAndComplete = async () => {
+        await minReadTime;
+        
+        const checkInterval = setInterval(() => {
+          if (isVideoLoaded.current || forceFail) {
+            clearInterval(checkInterval);
+            setPhase('dissolving');
+            setTimeout(onComplete, 1000);
+          }
+        }, 100);
+        
+        // Failsafe: force complete after 10s wait
+        setTimeout(() => {
+           forceFail = true;
+        }, 10000);
+      };
+      
+      checkVideoAndComplete();
     }, 1000);
   };
 
