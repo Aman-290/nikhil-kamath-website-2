@@ -1,0 +1,190 @@
+[
+    {
+        "id": "call-centre",
+        "year": 2003,
+        "value": 8000,
+        "displayValue": "₹8,000/month",
+        "label": "The Fake",
+        "description": "Age 17. Forged a birth certificate. Call centre at 24/7, UK shift 4PM–1AM. ₹8,000 a month. He traded penny stocks with what was left.",
+        "asset": "nikhil-call-centre-2003.webp",
+        "milestone": true,
+        "section": "origin"
+    },
+    {
+        "id": "marsoft",
+        "year": 2003.5,
+        "value": 40000,
+        "displayValue": "₹4 → ₹20",
+        "label": "The First Trade",
+        "description": "Marsoft. A penny stock tech company. Bought at ₹4, sold at ₹20. 'There was no reason why it should have gone up. It was blind luck. But I was hooked.'",
+        "asset": "marsoft-ticker.webp",
+        "milestone": false,
+        "section": "trading"
+    },
+    {
+        "id": "fathers-savings",
+        "year": 2004,
+        "value": 200000,
+        "displayValue": "₹2L",
+        "label": "Father's Leap of Faith",
+        "description": "His father, a Canara Bank executive, handed over his personal savings. No questions asked. The same man who watched his son drop out of school.",
+        "asset": "raghuram-kamath-banker.jpg",
+        "milestone": true,
+        "section": "trading"
+    },
+    {
+        "id": "manager-deal",
+        "year": 2005,
+        "value": 1000000,
+        "displayValue": "₹10L",
+        "label": "The Manager's Deal",
+        "description": "He got so good at trading that his call centre manager stopped requiring him to show up. Just marked him present. Let him manage the entire team's money.",
+        "asset": null,
+        "milestone": false,
+        "section": "trading"
+    },
+    {
+        "id": "kamath-associates",
+        "year": 2006,
+        "value": 5000000,
+        "displayValue": "₹50L",
+        "label": "Kamath & Associates",
+        "description": "With Nithin. A proprietary trading and sub-broking firm. HNI portfolios. Over the next decade: 55% post-tax returns, year on year.",
+        "asset": null,
+        "milestone": true,
+        "section": "trading"
+    },
+    {
+        "id": "financial-crisis",
+        "year": 2008,
+        "value": 20000000,
+        "displayValue": "₹2Cr",
+        "label": "2008: The System Breaks",
+        "description": "The global financial crisis revealed what they already suspected: India's brokerage system was opaque, expensive, and designed to extract — not serve.",
+        "asset": null,
+        "milestone": false,
+        "section": "zerodha"
+    },
+    {
+        "id": "zerodha-founded",
+        "year": 2010,
+        "value": 50000000,
+        "displayValue": "₹5Cr",
+        "label": "Zerodha — August 15, 2010",
+        "description": "Independence Day. Not a coincidence. Zero + Rodha (Sanskrit: barrier) = Zero Barriers. ₹10 lakh from personal savings. No VC. No ads. No permission.",
+        "asset": "zerodha-first-office-2010.webp",
+        "milestone": true,
+        "section": "zerodha"
+    },
+    {
+        "id": "zerodha-scaling",
+        "year": 2013,
+        "value": 500000000,
+        "displayValue": "₹50Cr",
+        "label": "Word of Mouth Only",
+        "description": "3,000 accounts in year one. Growing entirely through referrals. Never bought a single ad. Kailash Nadh building the entire tech stack from scratch.",
+        "asset": null,
+        "milestone": false,
+        "section": "zerodha"
+    },
+    {
+        "id": "kite-launch",
+        "year": 2015,
+        "value": 2000000000,
+        "displayValue": "₹200Cr",
+        "label": "Kite: Trading Reimagined",
+        "description": "Their HTML5 trading platform. Fast. Clean. No dark patterns. The product that made everyone else look like they were designed in 2001.",
+        "asset": null,
+        "milestone": false,
+        "section": "zerodha"
+    },
+    {
+        "id": "forbes-30",
+        "year": 2016,
+        "value": 8000000000,
+        "displayValue": "₹800Cr",
+        "label": "Forbes 30 Under 30",
+        "description": "Asia, Finance & Venture Capital. The dropout who disrupted an entire industry got noticed. He still hadn't spent a rupee on advertising.",
+        "asset": null,
+        "milestone": true,
+        "section": "zerodha"
+    },
+    {
+        "id": "true-beacon",
+        "year": 2019,
+        "value": 30000000000,
+        "displayValue": "₹3,000Cr",
+        "label": "True Beacon — Zero Fee",
+        "description": "Co-founded with Richard Pattle (former Standard Chartered). Minimum ₹10 crore to invest. Zero management fees. Only 10% performance fee on profits. GIFT City's first hedge fund.",
+        "asset": null,
+        "milestone": true,
+        "section": "ecosystem"
+    },
+    {
+        "id": "pandemic-boom",
+        "year": 2020,
+        "value": 100000000000,
+        "displayValue": "₹10,000Cr",
+        "label": "The Pandemic Paradox",
+        "description": "While the world locked down, retail India discovered trading. Zerodha doubled clients. The man who built for exactly this moment watched it arrive.",
+        "asset": null,
+        "milestone": false,
+        "section": "zerodha"
+    },
+    {
+        "id": "chess-gate",
+        "year": 2021,
+        "value": 100000000000,
+        "displayValue": "98.9%",
+        "label": "Chess-Gate",
+        "description": "Charity chess against Viswanathan Anand. Accuracy: 98.9%. His normal Chess.com games: 0.6–10.9%. Chess.com banned him. Forbes called it 'Liar's Chess'. Anand forgave him in 24 hours.",
+        "asset": "vishy-anand-shadow.png",
+        "milestone": false,
+        "controversy": true,
+        "section": "paradox"
+    },
+    {
+        "id": "billionaire",
+        "year": 2021.5,
+        "value": 120000000000,
+        "displayValue": "₹12,500Cr",
+        "label": "India's Youngest Billionaire",
+        "description": "Age 34. School dropout. No degree. Never raised external capital. The ₹8,000 call centre salary had become $1.5 billion.",
+        "asset": "nikhil-hero-bw-cutout.png",
+        "milestone": true,
+        "section": "zerodha"
+    },
+    {
+        "id": "giving-pledge",
+        "year": 2023,
+        "value": 220000000000,
+        "displayValue": "₹22,000Cr",
+        "label": "50% Away",
+        "description": "Age 36. India's youngest Giving Pledge signatory. 'I cannot think of a more personally rewarding use of wealth than to give while one is living.' He also built YIPP — a junior version for Indians under 45.",
+        "asset": "giving-pledge-bg.webp",
+        "milestone": true,
+        "section": "giving"
+    },
+    {
+        "id": "wtfund-foundery",
+        "year": 2024,
+        "value": 240000000000,
+        "displayValue": "₹24,000Cr",
+        "label": "Building the Next Generation",
+        "description": "WTFund: ₹20 lakh grants, no equity, for founders under 25. The Foundery: 90-day residential co-founder factory with Kishore Biyani. 'MBAs create managers. We need builders.'",
+        "asset": "young-founders-goa.webp",
+        "milestone": true,
+        "section": "ecosystem"
+    },
+    {
+        "id": "present",
+        "year": 2025,
+        "value": 270000000000,
+        "displayValue": "₹27,000Cr",
+        "label": "Modi. Musk. ₹27,000 Crore.",
+        "description": "January 2025: PM Modi's first-ever podcast. November 2025: Elon Musk, 7 million views. The school dropout from Shimoga is now India's most significant media interviewer.",
+        "asset": "wtf-podcast-studio.webp",
+        "milestone": true,
+        "section": "podcast"
+    }
+]

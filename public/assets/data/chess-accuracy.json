@@ -1,0 +1,32 @@
+[
+    {
+        "label": "vs Novice 1",
+        "accuracy": 6.2,
+        "type": "normal",
+        "note": "Lost in 9 moves"
+    },
+    {
+        "label": "vs Novice 2",
+        "accuracy": 10.9,
+        "type": "normal",
+        "note": "Lost in 12 moves"
+    },
+    {
+        "label": "vs Novice 3",
+        "accuracy": 0.6,
+        "type": "normal",
+        "note": "Lost in 4 moves"
+    },
+    {
+        "label": "Average Club Player",
+        "accuracy": 72,
+        "type": "baseline",
+        "note": "~1500 ELO"
+    },
+    {
+        "label": "vs Viswanathan Anand",
+        "accuracy": 98.9,
+        "type": "anomaly",
+        "note": "Charity match. Computer assistance."
+    }
+]

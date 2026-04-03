@@ -1,0 +1,104 @@
+@import url('https://api.fontshare.com/v2/css?f[]=clash-display@200,300,400,500,600,700&f[]=satoshi@300,400,500,700,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-primary-bg: #0A0A0F;
+  --color-primary-text: #F5F5F5;
+  --color-secondary-bg: #111827;
+  --color-secondary-text: #9CA3AF;
+  --color-surface-bg: #1A1F2E;
+  --color-accent-chartreuse: #D4FF00;
+  --color-accent-gold: #D4A853;
+  --color-accent-green: #00B386;
+  --color-accent-red: #EB5757;
+  --color-chart-line: #D4FF00;
+
+  --font-clash: 'Clash Display', 'sans-serif';
+  --font-satoshi: 'Satoshi', 'sans-serif';
+  --font-mono: 'JetBrains Mono', 'monospace';
+  --font-garamond: 'Cormorant Garamond', 'serif';
+}
+
+@layer base {
+  :root {
+    --bg-primary: #0A0A0F;
+    --bg-secondary: #111827;
+    --bg-surface: #1A1F2E;
+    --accent-chartreuse: #D4FF00;
+  }
+
+  body {
+    background-color: var(--color-primary-bg);
+    color: var(--color-primary-text);
+    font-family: var(--font-satoshi);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+  
+  ::selection {
+    background-color: var(--color-accent-chartreuse);
+    color: #000;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-clash);
+    font-weight: 600;
+    letter-spacing: 0.025em;
+  }
+}
+
+/* Lenis smooth scroll */
+html.lenis, html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+.font-tattoo,
+.font-tattoo * {
+  font-family: 'Rock Salt', 'Cormorant Garamond', serif !important;
+}
+
+.tattoo-ink {
+  font-family: 'Rock Salt', 'Cormorant Garamond', serif !important;
+  letter-spacing: 0.02em;
+  text-shadow: 0 0 0.5px rgba(212, 255, 0, 0.4);
+}
+
+.egg-grayscale {
+  filter: grayscale(1) contrast(0.9);
+}
+
+.labrador-cursor,
+.labrador-cursor * {
+  cursor: url('/assets/icons/labrador-cursor.svg') 4 4, auto !important;
+}
+
+@keyframes marsoftTicker {
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.marsoft-tape {
+  display: inline-block;
+  padding-left: 100%;
+  animation: marsoftTicker 4s linear 3;
+}
