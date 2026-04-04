@@ -1,6 +1,9 @@
-﻿import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import LottiePlayer from '../ui/LottiePlayer';
+import AnimatedText from '../ui/AnimatedText';
+import CountUpStat from '../ui/CountUpStat';
+import TiltCard from '../ui/TiltCard';
 
 export default function TheBigSpike() {
   const [coffeeAnim, setCoffeeAnim] = useState(null);
@@ -13,7 +16,7 @@ export default function TheBigSpike() {
   }, []);
 
   return (
-    <section className="relative w-full z-10 bg-[#050505] overflow-hidden">     
+    <section data-chapter-id="the-big-spike" className="relative w-full z-10 bg-[#050505] overflow-hidden">     
 
       {/* Background ambient glow setup */}
       <div className="absolute inset-0 bg-gradient-to-b from-white/[0.02] to-transparent pointer-events-none" />
@@ -34,15 +37,28 @@ export default function TheBigSpike() {
           className="space-y-6 relative z-10 w-full max-w-5xl"
         >
           <div className="flex flex-col items-center justify-center space-y-6"> 
-            <h2 className="font-clash text-6xl md:text-[8rem] text-white/90 leading-[1] font-medium tracking-tight drop-shadow-xl">
-              August 15, 2010.
-            </h2>
-            <h2 className="font-clash text-5xl md:text-[6rem] text-white/40 leading-[1.1] font-medium tracking-tight">
-              Independence Day.
-            </h2>
-            <h2 className="font-clash text-7xl md:text-[9rem] text-[#D4FF00] leading-[1] font-bold tracking-tight mt-12 drop-shadow-[0_0_30px_rgba(212,255,0,0.3)]">
-              Zero Barriers.
-            </h2>
+            <AnimatedText
+              mode="split-chars"
+              text="August 15, 2010."
+              tag="h2"
+              className="font-clash text-6xl md:text-[8rem] text-white/90 leading-[1] font-medium tracking-tight drop-shadow-xl"
+              stagger={0.03}
+            />
+            <AnimatedText
+              mode="split-words"
+              text="Independence Day."
+              tag="h2"
+              className="font-clash text-5xl md:text-[6rem] text-white/40 leading-[1.1] font-medium tracking-tight"
+              delay={0.5}
+            />
+            <AnimatedText
+              mode="split-chars"
+              text="Zero Barriers."
+              tag="h2"
+              className="font-clash text-7xl md:text-[9rem] text-[#D4FF00] leading-[1] font-bold tracking-tight mt-12 drop-shadow-[0_0_30px_rgba(212,255,0,0.3)]"
+              delay={0.8}
+              stagger={0.04}
+            />
           </div>
 
           <div className="mt-12 pt-8 flex flex-col items-center justify-center gap-8">
@@ -166,18 +182,24 @@ export default function TheBigSpike() {
             { value: "₹5,496Cr", label: "Profit FY24" },
             { value: "15.8%", label: "Market Share" }
           ].map((stat, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1, duration: 0.5 }}
-              className="bg-[#0A0A0A] py-12 px-8 border border-white/10 rounded-[2rem] flex flex-col justify-center items-center text-center relative overflow-hidden group hover:border-[#D4FF00]/30 transition-colors shadow-[0_0_30px_rgba(0,0,0,0.5)]"
-            >
-              <div className="absolute inset-0 bg-[#D4FF00]/0 group-hover:bg-[#D4FF00]/[0.03] transition-colors duration-500" />
-              <div className="text-4xl md:text-5xl lg:text-6xl font-clash font-medium text-white mb-4 tracking-tight relative z-10 drop-shadow-lg group-hover:scale-105 transition-transform duration-500">{stat.value}</div>
-              <div className="text-[#D4FF00] font-mono uppercase tracking-[0.2em] text-[11px] relative z-10 bg-[#D4FF00]/10 px-4 py-1.5 rounded-full">{stat.label}</div>
-            </motion.div>
+            <TiltCard key={i} tiltMax={10} className="rounded-[2rem]">
+              <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.12, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                className="bg-[#0A0A0A] py-12 px-8 border border-white/10 rounded-[2rem] flex flex-col justify-center items-center text-center relative overflow-hidden group hover:border-[#D4FF00]/30 transition-colors shadow-[0_0_30px_rgba(0,0,0,0.5)] h-full"
+              >
+                <div className="absolute inset-0 bg-[#D4FF00]/0 group-hover:bg-[#D4FF00]/[0.03] transition-colors duration-500" />
+                <CountUpStat
+                  value={stat.value}
+                  duration={2000}
+                  delay={i * 150}
+                  className="text-4xl md:text-5xl lg:text-6xl font-clash font-medium text-white mb-4 tracking-tight relative z-10 drop-shadow-lg"
+                />
+                <div className="text-[#D4FF00] font-mono uppercase tracking-[0.2em] text-[11px] relative z-10 bg-[#D4FF00]/10 px-4 py-1.5 rounded-full">{stat.label}</div>
+              </motion.div>
+            </TiltCard>
           ))}
         </div>
 
@@ -225,7 +247,7 @@ export default function TheBigSpike() {
 
           <div className="grid md:grid-cols-3 gap-8">
             {/* Nithin */}
-            <div className="group bg-[#0A0A0A] rounded-[2rem] overflow-hidden p-8 sm:p-10 border border-white/10 hover:border-white/20 transition-all duration-500 relative flex flex-col shadow-[0_0_40px_rgba(0,0,0,0.3)]">
+            <TiltCard tiltMax={6} className="rounded-[2rem]"><div className="group bg-[#0A0A0A] rounded-[2rem] overflow-hidden p-8 sm:p-10 border border-white/10 hover:border-white/20 transition-all duration-500 relative flex flex-col shadow-[0_0_40px_rgba(0,0,0,0.3)] h-full">
                <div className="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-white/5 via-white/20 to-white/5 group-hover:via-[#F59E0B] transition-colors duration-700" />
                <div className="w-32 h-32 mb-10 rounded-full overflow-hidden mx-auto border-[3px] border-white/10 bg-[#111] group-hover:border-white/30 transition-colors relative shadow-inner">
                  <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 mix-blend-overlay transition-colors z-10 pointer-events-none" />
@@ -244,10 +266,10 @@ export default function TheBigSpike() {
                    I quickly realised Nikhil is a better trader than me. His profits in the first two years helped us build the company without needing venture capital.
                  </p>
                </div>
-            </div>
+            </div></TiltCard>
 
             {/* Nikhil */}
-            <div className="group bg-[#0A0A0A] rounded-[2rem] overflow-hidden p-8 sm:p-10 border border-[#D4FF00]/10 hover:border-[#D4FF00]/50 transition-all duration-500 relative flex flex-col shadow-[0_0_40px_rgba(212,255,0,0.03)] hover:shadow-[0_0_60px_rgba(212,255,0,0.15)] transform hover:-translate-y-2 z-10">     
+            <TiltCard tiltMax={6} className="rounded-[2rem] z-10"><div className="group bg-[#0A0A0A] rounded-[2rem] overflow-hidden p-8 sm:p-10 border border-[#D4FF00]/10 hover:border-[#D4FF00]/50 transition-all duration-500 relative flex flex-col shadow-[0_0_40px_rgba(212,255,0,0.03)] hover:shadow-[0_0_60px_rgba(212,255,0,0.15)] h-full">     
                <div className="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-[#D4FF00]/20 via-[#D4FF00] to-[#D4FF00]/20 transition-colors shadow-[0_0_15px_rgba(212,255,0,0.6)]" />
                <div className="absolute top-0 right-0 w-64 h-64 bg-[#D4FF00]/5 rounded-bl-full pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
@@ -263,10 +285,10 @@ export default function TheBigSpike() {
                    Everything that touches markets, trading, and investing. If it's stock markets, investing, or trading — his call. If it's product, people, or broking — Nithin's.
                  </p>
                </div>
-            </div>
+            </div></TiltCard>
 
             {/* Kailash */}
-            <div className="group bg-[#0A0A0A] rounded-[2rem] overflow-hidden p-8 sm:p-10 border border-white/10 hover:border-white/20 transition-all duration-500 relative flex flex-col shadow-[0_0_40px_rgba(0,0,0,0.3)]">
+            <TiltCard tiltMax={6} className="rounded-[2rem]"><div className="group bg-[#0A0A0A] rounded-[2rem] overflow-hidden p-8 sm:p-10 border border-white/10 hover:border-white/20 transition-all duration-500 relative flex flex-col shadow-[0_0_40px_rgba(0,0,0,0.3)] h-full">
                <div className="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-white/5 via-white/20 to-white/5 group-hover:via-[#10B981] transition-colors duration-700" />
                <div className="w-32 h-32 mb-10 rounded-full overflow-hidden mx-auto border-[3px] border-white/10 bg-[#111] group-hover:border-white/30 transition-colors shadow-inner">
                  <img src="/assets/images/kailash-nadh-cutout.jpg" alt="Kailash Nadh" className="w-full h-full object-cover transition-all duration-700" />
@@ -284,7 +306,7 @@ export default function TheBigSpike() {
                    </p>
                  </div>
                </div>
-            </div>
+            </div></TiltCard>
 
           </div>
         </div>

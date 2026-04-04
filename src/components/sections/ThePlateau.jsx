@@ -1,11 +1,11 @@
-﻿import React from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import ChessAccuracyChart from '../ui/ChessAccuracyChart';
 import RentOwnToggle from '../ui/RentOwnToggle';
 
 export default function ThePlateau() {
   return (
-    <section className="relative w-full py-32 z-10 bg-[#050505]">
+    <section data-chapter-id="the-plateau" className="relative w-full py-32 z-10 bg-[#050505]">
       
       {/* Ambient background glows */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#D4FF00]/[0.02] to-transparent pointer-events-none" />

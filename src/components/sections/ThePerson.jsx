@@ -1,12 +1,13 @@
-﻿import React from 'react';
+import React from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import TiltCard from '../ui/TiltCard';
 
 export default function ThePerson() {
   const { scrollYProgress } = useScroll();
   const yBg = useTransform(scrollYProgress, [0, 1], ['0%', '20%']);
 
   return (
-    <section className="relative w-full py-32 z-10 min-h-screen bg-[#0A0A0A] overflow-hidden">
+    <section data-chapter-id="the-person" className="relative w-full py-32 z-10 min-h-screen bg-[#0A0A0A] overflow-hidden">
       
       {/* Subtle Background Glow */}
       <div className="absolute top-0 right-0 w-[50vw] h-[50vw] bg-accent-chartreuse/5 rounded-full blur-[120px] mix-blend-screen pointer-events-none" />
@@ -38,37 +39,45 @@ export default function ThePerson() {
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             
-            <motion.div className="bg-white/5 backdrop-blur-sm p-8 rounded-3xl border border-white/5 hover:border-accent-chartreuse/30 transition-colors group flex flex-col justify-between min-h-[250px]">
+            <TiltCard tiltMax={8} className="rounded-3xl">
+            <motion.div className="bg-white/5 backdrop-blur-sm p-8 rounded-3xl border border-white/5 hover:border-accent-chartreuse/30 transition-colors group flex flex-col justify-between min-h-[250px] h-full">
               <span className="text-secondary-text font-mono text-sm uppercase tracking-widest group-hover:text-accent-chartreuse transition-colors">6:30 AM</span>
               <div>
                 <h4 className="text-2xl font-clash text-white mb-2">Sunlight & Data</h4>
                 <p className="font-satoshi text-secondary-text text-sm h-12">20 minutes of morning sun. Bloomberg. The Print.</p>
               </div>
             </motion.div>
+            </TiltCard>
             
-            <motion.div className="bg-white/5 backdrop-blur-sm p-8 rounded-3xl border border-white/5 hover:border-accent-chartreuse/30 transition-colors group flex flex-col justify-between min-h-[250px]">
+            <TiltCard tiltMax={8} className="rounded-3xl">
+            <motion.div className="bg-white/5 backdrop-blur-sm p-8 rounded-3xl border border-white/5 hover:border-accent-chartreuse/30 transition-colors group flex flex-col justify-between min-h-[250px] h-full">
               <span className="text-secondary-text font-mono text-sm uppercase tracking-widest group-hover:text-accent-chartreuse transition-colors">11:00 AM</span>
               <div>
                 <h4 className="text-2xl font-clash text-white mb-2">Fasting State</h4>
                 <p className="font-satoshi text-secondary-text text-sm h-12">Black coffee only. 16:8 intermittent fasting. No breakfast.</p>
               </div>
             </motion.div>
+            </TiltCard>
             
-            <motion.div className="bg-white/5 backdrop-blur-sm p-8 rounded-3xl border border-white/5 hover:border-accent-chartreuse/30 transition-colors group flex flex-col justify-between min-h-[250px]">
+            <TiltCard tiltMax={8} className="rounded-3xl">
+            <motion.div className="bg-white/5 backdrop-blur-sm p-8 rounded-3xl border border-white/5 hover:border-accent-chartreuse/30 transition-colors group flex flex-col justify-between min-h-[250px] h-full">
               <span className="text-secondary-text font-mono text-sm uppercase tracking-widest group-hover:text-accent-chartreuse transition-colors">1:30 PM & 4:00 PM</span>
               <div>
                 <h4 className="text-2xl font-clash text-white mb-2">Markets & Muscle</h4>
                 <p className="font-satoshi text-secondary-text text-sm h-12">Deep work on portfolio, followed by the daily gym session.</p>
               </div>
             </motion.div>
+            </TiltCard>
             
-            <motion.div className="bg-gradient-to-br from-accent-red/10 to-transparent p-8 rounded-3xl border border-accent-red/20 hover:border-accent-red/40 transition-colors group flex flex-col justify-between min-h-[250px]">
+            <TiltCard tiltMax={8} className="rounded-3xl">
+            <motion.div className="bg-gradient-to-br from-accent-red/10 to-transparent p-8 rounded-3xl border border-accent-red/20 hover:border-accent-red/40 transition-colors group flex flex-col justify-between min-h-[250px] h-full">
               <span className="text-accent-red font-mono text-sm uppercase tracking-widest">6:00 PM onwards</span>
               <div>
                 <h4 className="text-2xl font-clash text-white mb-2">The Shut Down</h4>
                 <p className="font-satoshi text-secondary-text text-sm">No messages. No devices 1 hour before bed. Magnesium + Theanine.</p>
               </div>
             </motion.div>
+            </TiltCard>
 
           </div>
         </div>

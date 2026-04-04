@@ -1,10 +1,10 @@
-﻿import React from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import StartupConstellation from '../ui/StartupConstellation';
 
 export default function TheEcosystem() {
   return (
-    <section className="relative w-full py-32 z-10 min-h-screen">
+    <section data-chapter-id="the-ecosystem" className="relative w-full py-32 z-10 min-h-screen">
       
       {/* Background image */}
       <div className="absolute inset-0 z-0 pointer-events-none">

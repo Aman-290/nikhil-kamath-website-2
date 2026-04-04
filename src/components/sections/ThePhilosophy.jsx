@@ -12,7 +12,7 @@ const quotes = [
 
 export default function ThePhilosophy() {
   return (
-    <section className="relative w-full z-10 bg-[#050508] text-center">
+    <section data-chapter-id="philosophy" className="relative w-full z-10 bg-[#050508] text-center">
       
       {quotes.map((quote, i) => (
         <div key={i} className="min-h-screen flex items-center justify-center p-6 border-b border-white/5 snap-center">

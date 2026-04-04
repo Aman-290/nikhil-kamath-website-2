@@ -4,7 +4,7 @@ import PodcastWall from '../ui/PodcastWall';
 
 export default function TheConversations() {
   return (
-    <section className="relative w-full z-10 pt-32">
+    <section data-chapter-id="conversations" className="relative w-full z-10 pt-32">
       
       {/* Intro section before the horizontal scroll */}
       <div className="container mx-auto px-6 md:px-12 xl:px-24 max-w-7xl mb-16 relative">

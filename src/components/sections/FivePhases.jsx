@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -78,6 +78,7 @@ export default function FivePhases() {
     <section 
       ref={containerRef} 
       className="relative w-full bg-[#050505] text-white flex flex-col md:h-screen overflow-hidden font-satoshi z-20"
+      data-chapter-id="five-phases"
     >
       {/* 
         -------------------------------------------
