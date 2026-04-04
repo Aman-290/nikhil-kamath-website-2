@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 export default function TheFake() {
   return (
-    <section className="relative w-full py-40 z-10 min-h-screen flex flex-col justify-center bg-[#050505] overflow-hidden">
+    <section id="section-fake" className="relative w-full py-40 z-10 min-h-screen flex flex-col justify-center bg-[#050505] overflow-hidden">
 
       {/* Ambient background glows */}
       <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#D4FF00]/[0.03] blur-[150px] rounded-full mix-blend-screen pointer-events-none" />

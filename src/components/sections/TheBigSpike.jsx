@@ -13,7 +13,7 @@ export default function TheBigSpike() {
   }, []);
 
   return (
-    <section className="relative w-full z-10 bg-[#050505] overflow-hidden">     
+    <section id="section-spike" className="relative w-full z-10 bg-[#050505] overflow-hidden">     
 
       {/* Background ambient glow setup */}
       <div className="absolute inset-0 bg-gradient-to-b from-white/[0.02] to-transparent pointer-events-none" />

@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { EGG_IDS, useEasterEggStore } from '../../hooks/useEasterEgg';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -34,8 +33,6 @@ export default function PodcastWall() {
 
   const [isDesktop, setIsDesktop] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
-  const { unlockEgg, setBryanPopupActive } = useEasterEggStore();
-
   useEffect(() => {
     const onResize = () => setIsDesktop(window.innerWidth >= 1024);
     onResize();
@@ -75,32 +72,13 @@ export default function PodcastWall() {
     });
   };
 
-  // Check for Bryan Johnson easter egg on manual scroll and update progress bar
+  // Update progress bar on scroll
   const onContainerScroll = () => {
     if (!scrollWrapperRef.current) return;
 
     const { scrollLeft, scrollWidth, clientWidth } = scrollWrapperRef.current;
     const maxScroll = scrollWidth - clientWidth;
     setScrollProgress(maxScroll > 0 ? scrollLeft / maxScroll : 0);
-
-    const cards = scrollWrapperRef.current.querySelectorAll('article');
-    let bryanCard = null;
-    
-    cards.forEach(card => {
-      if (card.getAttribute('data-guest-name') === 'Bryan Johnson') {
-        bryanCard = card;
-      }
-    });
-
-    if (bryanCard) {
-      const rect = bryanCard.getBoundingClientRect();
-      const inView = rect.left >= 0 && rect.right <= window.innerWidth;
-      
-      if (inView) {
-        unlockEgg(EGG_IDS.BRYAN_JOHNSON);
-        setBryanPopupActive(true);
-      }
-    }
   };
 
   if (!isDesktop) {

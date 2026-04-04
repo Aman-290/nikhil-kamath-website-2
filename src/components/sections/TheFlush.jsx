@@ -33,7 +33,14 @@ export default function TheFlush() {
   };
 
   return (
-    <section className="relative w-full py-32 z-10 min-h-screen flex items-center">
+    <section id="section-flush" className="relative w-full py-32 z-10 min-h-screen flex items-center">
+      <motion.div
+        className="w-full"
+        initial={{ clipPath: 'inset(0 100% 100% 0)' }}
+        whileInView={{ clipPath: 'inset(0 0% 0% 0)' }}
+        viewport={{ once: true, margin: '-10%' }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      >
       <div className="container mx-auto px-6 md:px-12 xl:px-24 max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           
@@ -100,10 +107,10 @@ export default function TheFlush() {
                   <span className="text-primary-text font-medium">Down the toilet.</span>
                 </p>
                 
-                <div className="border-l-2 border-accent-chartreuse pl-6 my-8 space-y-2 py-2">
-                  <p className="font-mono text-sm text-primary-text">Lesson 1: Markets are fragile.</p>
-                  <p className="font-mono text-sm text-primary-text">Lesson 2: Supply chains can be disrupted by mothers.</p>
-                  <p className="font-mono text-sm text-primary-text">Lesson 3: Try again.</p>
+                <div className="border-l-2 border-[#D4FF00] pl-6 my-8 space-y-2 py-2">
+                  <p className="font-satoshi text-white/70 text-lg">Markets are fragile.</p>
+                  <p className="font-satoshi text-white/70 text-lg">Supply chains can be disrupted by mothers.</p>
+                  <p className="font-satoshi text-white text-lg font-medium">Try again.</p>
                 </div>
 
                 <p className="text-sm text-secondary-text/60 italic pt-4">
@@ -115,6 +122,7 @@ export default function TheFlush() {
 
         </div>
       </div>
+      </motion.div>
     </section>
   );
 }

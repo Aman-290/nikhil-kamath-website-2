@@ -11,7 +11,7 @@ export default function Origins() {
   };
 
   return (
-    <section className="relative w-full py-32 z-10 bg-[#050505]">
+    <section id="section-origins" className="relative w-full py-32 z-10 bg-[#050505]">
       <div className="container mx-auto px-6 md:px-12 xl:px-24 max-w-7xl">
 
         {/* Intro */}
@@ -120,6 +120,10 @@ export default function Origins() {
           </motion.div>
         </div>
 
+        {/* Section divider */}
+        <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent my-24" />
+        <p className="font-mono text-[10px] tracking-[0.3em] text-white/20 uppercase text-center mb-24">The other education</p>
+
         {/* The Exit / School - Now integrating scrapbook */}
         <div className="flex flex-col lg:flex-row items-center py-32 relative">
           
@@ -188,6 +192,47 @@ export default function Origins() {
             </motion.div>
           </div>
         </div>
+
+        {/* Chess Panel */}
+        <motion.div
+          className="relative w-full rounded-[2rem] overflow-hidden mt-32 mb-8"
+          style={{ cursor: "url('/assets/icons/chess-knight-cursor.svg') 16 16, crosshair" }}
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1 }}
+        >
+          {/* Chessboard background */}
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: "url('/assets/images/chess-board-dramatic.webp')",
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              opacity: 0.08,
+            }}
+          />
+          <div className="absolute inset-0 bg-[#050505]/70" />
+
+          {/* Kasparov ambient quote */}
+          <p className="absolute inset-0 flex items-center justify-center font-garamond italic text-white select-none pointer-events-none px-8 text-center leading-tight"
+             style={{ fontSize: '5rem', opacity: 0.05, lineHeight: 1.1 }}>
+            "Chess teaches you how to work under a structure, in a system, but yet try and be creative within that system."
+          </p>
+
+          {/* Foreground content */}
+          <div className="relative z-10 px-8 md:px-20 py-24 flex flex-col items-center text-center">
+            <h3 className="font-clash text-3xl md:text-5xl text-white font-medium tracking-tight leading-tight mb-12 max-w-3xl">
+              He dropped out to be a chess player.<br />He became a trader instead.<br />
+              <span className="text-white/40">The pattern was the same.</span>
+            </h3>
+            <div className="flex flex-col gap-4 text-white/50 font-satoshi text-lg">
+              <motion.p initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}>Age 5. &nbsp; First game.</motion.p>
+              <motion.p initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.25 }}>Age 14. &nbsp; National level.</motion.p>
+              <motion.p initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.4 }}>Age 15. &nbsp; Out of school. Out of chess. Into the market.</motion.p>
+            </div>
+          </div>
+        </motion.div>
 
       </div>
     </section>

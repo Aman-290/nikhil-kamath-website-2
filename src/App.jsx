@@ -3,6 +3,7 @@ import SmoothScrollWrapper from './components/layout/SmoothScrollWrapper';
 import NoiseOverlay from './components/layout/NoiseOverlay';
 import EasterEggManager from './components/layout/EasterEggManager';
 import ChartSpine from './components/chart/ChartSpine';
+import JumpNav from './components/layout/JumpNav';
 import Footer from './components/layout/Footer';
 import NotFoundFlush from './components/layout/NotFoundFlush';
 import TradingScrollbar from './components/layout/TradingScrollbar';
@@ -65,6 +66,7 @@ function App() {
 
         {/* The SVG spine representing the backbone of the page */}
         {preloaderComplete && <ChartSpine />}
+        {preloaderComplete && <JumpNav />}
         
         <main className={`relative z-10 mx-auto w-full transition-opacity duration-1000 ${preloaderComplete ? 'opacity-100' : 'opacity-0'}`}>
           <Suspense fallback={null}>

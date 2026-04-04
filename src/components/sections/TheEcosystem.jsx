@@ -4,7 +4,7 @@ import StartupConstellation from '../ui/StartupConstellation';
 
 export default function TheEcosystem() {
   return (
-    <section className="relative w-full py-32 z-10 min-h-screen">
+    <section id="section-ecosystem" className="relative w-full py-32 z-10 min-h-screen">
       
       {/* Background image */}
       <div className="absolute inset-0 z-0 pointer-events-none">
@@ -29,8 +29,7 @@ export default function TheEcosystem() {
         >
           <h2 className="font-clash text-5xl md:text-7xl text-white mb-6 font-medium tracking-tight">The Ecosystem</h2>
           <p className="font-satoshi text-2xl text-white/50 leading-relaxed max-w-2xl">
-            Zerodha was never the destination.<br/>
-            Wait, let me rephrase that. It was the instrument.<br/>
+            Zerodha was the instrument.<br/>
             <span className="text-white font-medium">What he built with it tells a different story.</span>
           </p>
         </motion.div>

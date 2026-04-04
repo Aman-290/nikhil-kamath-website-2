@@ -6,7 +6,7 @@ export default function TheGiving() {
   const yBg = useTransform(scrollYProgress, [0, 1], ['0%', '30%']);
 
   return (
-    <section className="relative w-full z-10 min-h-[120vh] bg-[#050505] flex flex-col justify-center overflow-hidden py-32 rounded-t-[3rem] shadow-[0_-20px_60px_rgba(0,0,0,0.8)] border-t border-white/5">
+    <section id="section-giving" className="relative w-full z-10 min-h-[120vh] bg-[#050505] flex flex-col justify-center overflow-hidden py-32 rounded-t-[3rem] shadow-[0_-20px_60px_rgba(0,0,0,0.8)] border-t border-white/5">
 
       {/* Dynamic Background with Image */}
       <div className="absolute inset-0 z-0">
@@ -83,9 +83,11 @@ export default function TheGiving() {
               <h3 className="font-clash text-4xl text-white mb-2 tracking-tight">4th Signatory</h3>
               <p className="font-satoshi text-gray-500 text-sm">Joining Gates and Buffett.</p>
             </div>
-            <p className="font-garamond italic text-2xl md:text-3xl text-gray-300 leading-snug pt-8 border-t border-white/5">
-              "I cannot predict if I may live to see the change I hope to create. But I can act decisively."
-            </p>
+            <div className="border-l-2 border-[#D4FF00] pl-6 mt-8">
+              <p className="font-garamond italic text-2xl md:text-3xl text-gray-300 leading-snug">
+                "I cannot predict if I may live to see the change I hope to create. But I can act decisively."
+              </p>
+            </div>
           </motion.div>
 
           {/* Metric Card 2 */}

@@ -7,28 +7,33 @@ gsap.registerPlugin(ScrollTrigger);
 const phases = [
   {
     title: "PENNY STOCKS",
-    years: "2003-2005",
-    desc: "Betting blindly. Hoping a company does well. The market rewards beginners to keep them gambling. It rewarded him: Marsoft, ₹4 → ₹20. It also punished him. Many times.",
+    years: "2003–2005",
+    boldLine: "Blind luck. Both ways.",
+    desc: "Marsoft: ₹4 → ₹20. No reason. He was hooked anyway.",
   },
   {
     title: "FUNDAMENTALS",
-    years: "2005-2008",
-    desc: "He read Graham. He thought fundamentals were the answer. 'Companies do not move based on how well they are doing fundamentally. Companies are a factor of sentiment.' The lesson: the market is not rational. It is human.",
+    years: "2005–2008",
+    boldLine: "Companies are sentiment.",
+    desc: "Benjamin Graham was right about value. Wrong about timing.",
   },
   {
-    title: "TECHNICAL ANALYSIS",
-    years: "2008-2011",
-    desc: "Moving average crossovers. 20-50 interval. Steve Nison's candlestick books. 'Technical analysis is a lagging indicator.' By the time the signal appears, the move has already started.",
+    title: "TECHNICALS",
+    years: "2008–2011",
+    boldLine: "The signal arrives late.",
+    desc: "By the time the chart shows the move, it's already over.",
   },
   {
     title: "QUANTITATIVE",
-    years: "2011-2015",
-    desc: "Pair trading. Delta hedging. Statistical arbitrage. Writing algorithms for correlation and mean regression. Shifted from big directional bets to 'catching smaller pieces — 20-30 basis points — many times over.' Kamath & Associates: 55% post-tax returns, year on year.",
+    years: "2011–2015",
+    boldLine: "55% post-tax. Year on year.",
+    desc: "Pair trading. Delta hedging. Kamath & Associates. No MBA required.",
   },
   {
     title: "SENTIMENT",
-    years: "2015-Present",
-    desc: "Promoter behavior. Institutional money flows. Geopolitical shifts. Interest rate cycles. The market is a human system. Understand the humans, and the system follows.",
+    years: "2015–Present",
+    boldLine: "Understand the humans.",
+    desc: "Promoter behavior. Geopolitical shifts. The market is people.",
   }
 ];
 
@@ -75,8 +80,11 @@ export default function FivePhases() {
   }, []);
 
   return (
-    <section 
-      ref={containerRef} 
+    <>
+    <style>{`@keyframes floatDot { from { transform: translateY(0px); } to { transform: translateY(-6px); } }`}</style>
+    <section
+      id="section-phases"
+      ref={containerRef}
       className="relative w-full bg-[#050505] text-white flex flex-col md:h-screen overflow-hidden font-satoshi z-20"
     >
       {/* 
@@ -105,6 +113,7 @@ export default function FivePhases() {
                 <h3 className="font-clash text-2xl text-white mt-4 mb-4 tracking-tight">
                   <span className="text-white/30 mr-2">0{i+1}.</span>{phase.title}
                 </h3>
+                <p className="font-clash text-lg text-white/80 mb-3 tracking-tight">{phase.boldLine}</p>
                 <p className="font-satoshi text-gray-400 leading-relaxed text-base">{phase.desc}</p>
               </div>
 
@@ -161,13 +170,51 @@ export default function FivePhases() {
               {/* Premium Glow Accents */}
               <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
               <div className="absolute -top-32 -right-32 w-64 h-64 bg-white/10 blur-[100px] rounded-full group-hover:bg-white/15 transition-colors duration-700 pointer-events-none" />
-              
-              <div className="relative z-10">
-                <span className="text-white/40 font-mono text-sm tracking-[0.2em] uppercase">{phase.years}</span>
-                <h3 className="font-clash text-3xl lg:text-4xl text-white mt-6 mb-6 tracking-tight">{phase.title}</h3>
-                <p className="font-satoshi text-gray-400 text-lg leading-relaxed font-light">
-                  {phase.desc}
-                </p>
+
+              {/* Phase-specific background */}
+              {i === 0 && (
+                <div className="absolute inset-0 overflow-hidden rounded-[2rem] pointer-events-none opacity-40">
+                  {[...Array(20)].map((_, j) => (
+                    <div key={j} className="absolute w-[2px] h-[2px] bg-white/30 rounded-full"
+                      style={{ top: `${(j * 37 + 11) % 100}%`, left: `${(j * 53 + 7) % 100}%`, animationName: 'floatDot', animationDuration: `${2 + (j % 3)}s`, animationDelay: `${j * 0.15}s`, animationIterationCount: 'infinite', animationDirection: 'alternate', animationTimingFunction: 'ease-in-out' }} />
+                  ))}
+                </div>
+              )}
+              {i === 1 && (
+                <div className="absolute inset-0 rounded-[2rem] pointer-events-none"
+                  style={{ background: 'repeating-linear-gradient(transparent, transparent 31px, rgba(255,255,255,0.03) 31px, rgba(255,255,255,0.03) 32px)' }} />
+              )}
+              {i === 2 && (
+                <div className="absolute bottom-8 right-8 pointer-events-none opacity-[0.07]">
+                  <svg width="80" height="120" viewBox="0 0 80 120">
+                    <rect x="10" y="60" width="16" height="50" fill="#D4FF00" />
+                    <rect x="10" y="20" width="16" height="38" fill="none" stroke="#D4FF00" strokeWidth="1.5" />
+                    <rect x="32" y="30" width="16" height="80" fill="#fff" />
+                    <rect x="32" y="10" width="16" height="18" fill="none" stroke="#fff" strokeWidth="1.5" />
+                    <rect x="54" y="45" width="16" height="65" fill="#D4FF00" />
+                    <rect x="54" y="10" width="16" height="33" fill="none" stroke="#D4FF00" strokeWidth="1.5" />
+                  </svg>
+                </div>
+              )}
+              {i === 3 && (
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden rounded-[2rem]">
+                  <p className="font-mono text-white/[0.04] text-xs leading-relaxed text-center px-4">
+                    correlation(A,B) = 0.87<br/>mean_revert()<br/>delta_hedge()<br/>sharpe_ratio = 2.14<br/>correlation(A,B) = 0.87<br/>mean_revert()
+                  </p>
+                </div>
+              )}
+              {i === 4 && (
+                <div className="absolute inset-0 rounded-[2rem] pointer-events-none"
+                  style={{ background: 'radial-gradient(circle at 50% 50%, rgba(212,255,0,0.04) 0%, transparent 70%)' }} />
+              )}
+
+              <div className="relative z-10 flex flex-col h-full justify-between">
+                <div>
+                  <span className="text-white/40 font-mono text-sm tracking-[0.2em] uppercase">{phase.years}</span>
+                  <h3 className="font-clash text-3xl lg:text-4xl text-white mt-6 mb-4 tracking-tight">{phase.title}</h3>
+                  <p className="font-clash text-xl text-white/80 mb-4 tracking-tight">{phase.boldLine}</p>
+                  <p className="font-satoshi text-gray-400 text-lg leading-relaxed font-light">{phase.desc}</p>
+                </div>
               </div>
 
               {/* Huge stylized transparent stroke Phase Number */}
@@ -193,5 +240,6 @@ export default function FivePhases() {
         </div>
       </div>
     </section>
+    </>
   );
 }

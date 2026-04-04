@@ -1,12 +1,7 @@
-import React, { useState } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useEasterEggStore } from '../../hooks/useEasterEgg';
+import React from 'react';
+import { motion } from 'framer-motion';
 
 export default function Finale() {
-  const { foundEggs } = useEasterEggStore();
-  const [showEggList, setShowEggList] = useState(false);
-  const foundCount = foundEggs?.size ?? 0;
-
   // The actual line breaking the boundary will be simulated by a tall div that goes off-screen
   return (
     <section className="relative w-full z-10 min-h-[150vh] flex flex-col justify-end pb-32 bg-[#0A0A0F]">
@@ -94,40 +89,6 @@ export default function Finale() {
           </motion.div>
 
         </div>
-      </div>
-
-      {/* Easter Egg Tracker (Bottom Left) */}
-      <div className="absolute bottom-8 left-6 md:left-12 z-50">
-        <button 
-          onClick={() => setShowEggList(!showEggList)}
-          className="text-xs font-mono text-secondary-text hover:text-accent-chartreuse transition-colors flex items-center space-x-2"
-        >
-          <span className="w-2 h-2 rounded-full bg-accent-chartreuse animate-pulse" />
-          <span>You've found [{foundCount}] of 12 hidden moments.</span>
-        </button>
-
-        {showEggList && (
-          <div className="absolute bottom-full left-0 mb-4 bg-surface-bg border border-white/10 p-6 rounded-xl w-64 shadow-2xl backdrop-blur-md">
-             <h4 className="font-satoshi text-primary-text border-b border-white/10 pb-2 mb-4">The Secrets</h4>
-             <ul className="space-y-3 font-mono text-xs">
-               {[...Array(12)].map((_, i) => {
-                  const eggId = i + 1; // Assuming eggs are mapped 1 to 12 logically
-                const isFound = foundEggs?.has(eggId);
-                  // Real implementation would map explicit keys, but visual proxy works here
-                  return (
-                    <li key={i} className="flex justify-between items-center">
-                       <span className="text-secondary-text">#{String(i + 1).padStart(2, '0')}</span>
-                       {isFound ? (
-                         <span className="text-accent-chartreuse">Found ✓</span>
-                       ) : (
-                         <span className="text-primary-text/20">███████</span>
-                       )}
-                    </li>
-                  )
-               })}
-             </ul>
-          </div>
-        )}
       </div>
 
       {/* Social Links (Bottom Right) */}

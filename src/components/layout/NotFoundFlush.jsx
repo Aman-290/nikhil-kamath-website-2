@@ -1,14 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { useEasterEggStore, EGG_IDS } from '../../hooks/useEasterEgg';
 import LottiePlayer from '../ui/LottiePlayer';
 
 export default function NotFoundFlush() {
-  const { unlockEgg } = useEasterEggStore();
   const [animationData, setAnimationData] = useState(null);
-
-  useEffect(() => {
-    unlockEgg(EGG_IDS.NOT_FOUND_404);
-  }, [unlockEgg]);
 
   useEffect(() => {
     fetch('/assets/animations/toilet-flush-anim.json')

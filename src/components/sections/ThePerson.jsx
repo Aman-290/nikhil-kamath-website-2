@@ -6,7 +6,7 @@ export default function ThePerson() {
   const yBg = useTransform(scrollYProgress, [0, 1], ['0%', '20%']);
 
   return (
-    <section className="relative w-full py-32 z-10 min-h-screen bg-[#0A0A0A] overflow-hidden">
+    <section id="section-person" className="relative w-full py-32 z-10 min-h-screen bg-[#0A0A0A] overflow-hidden">
       
       {/* Subtle Background Glow */}
       <div className="absolute top-0 right-0 w-[50vw] h-[50vw] bg-accent-chartreuse/5 rounded-full blur-[120px] mix-blend-screen pointer-events-none" />
@@ -152,6 +152,29 @@ export default function ThePerson() {
 
           </div>
         </div>
+
+        {/* On Changing One's Mind */}
+        <motion.div
+          className="bg-[#0A0A0A] border border-white/5 rounded-2xl p-8 md:p-10 mt-16 mb-16 max-w-2xl"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/20 mb-6 block">On changing one's mind</span>
+          <div className="font-satoshi text-white/60 text-lg leading-relaxed space-y-4 mb-6">
+            <p>He preached renting for years.<br/>Wrote it. Said it in interviews. Meant it.</p>
+            <p>Then bought 7,000 sq ft in Kingfisher Towers.<br/>Kiran Mazumdar-Shaw is his neighbour.</p>
+          </div>
+          <div className="border-l-2 border-[#D4FF00] pl-6 my-6">
+            <p className="font-satoshi italic text-white/70 text-lg leading-relaxed">
+              "With new information, if you are able to change your mind quickly — that has served me well."
+            </p>
+          </div>
+          <p className="font-satoshi text-white/40 text-sm italic">
+            He was right to change his mind. He was right to say so publicly.
+          </p>
+        </motion.div>
 
         {/* The Man Box */}
         <motion.div 
