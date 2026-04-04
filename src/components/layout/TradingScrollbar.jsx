@@ -28,12 +28,12 @@ function Candle({ index, numCandles, smoothProgress, onJump }) {
 
       {/* Candle Body Container - Glassmorphism */}
       <motion.div 
-        className="w-3 md:w-4 h-10 border border-white/20 bg-black/40 backdrop-blur-md rounded-[2px] overflow-hidden relative z-10 group-hover:border-[#D4FF00]/60 transition-all duration-500 shadow-lg"
+        className="w-3 md:w-4 h-10 border border-white/20 bg-black/40 backdrop-blur-md rounded-[2px] overflow-hidden relative z-10 group-hover:border-white/40 transition-all duration-500 shadow-lg"
         style={{ opacity: isPassedOrActive }}
       >
         {/* Inside Fill Box */}
         <motion.div 
-          className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#D4FF00] to-[#bfe600]"
+          className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-white/50 to-white/20"
           style={{ height: fillHeight }}
         />
 
@@ -43,7 +43,7 @@ function Candle({ index, numCandles, smoothProgress, onJump }) {
 
       {/* Active Glow behind the candle */}
       <motion.div 
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-12 bg-[#D4FF00]/40 blur-xl pointer-events-none rounded-full"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-12 bg-white/20 blur-xl pointer-events-none rounded-full"
         style={{ opacity: glowOpacity }}
       />
 
@@ -52,7 +52,7 @@ function Candle({ index, numCandles, smoothProgress, onJump }) {
         <div className="bg-black/60 backdrop-blur-lg border border-white/10 px-3 py-1.5 rounded-sm flex items-center space-x-3 shadow-2xl">
           <span className="font-mono text-[10px] tracking-widest text-gray-400 uppercase">VOL_{index + 1}</span>
           <div className="w-px h-3 bg-white/20" />
-          <span className="font-mono text-xs tracking-widest text-[#D4FF00] uppercase font-bold drop-shadow-[0_0_5px_rgba(212,255,0,0.5)]">
+          <span className="font-mono text-xs tracking-widest text-white/60 uppercase font-bold drop-shadow-[0_0_5px_rgba(255,255,255,0.2)]">
             {labels[index] || `VOL_${index}`}
           </span>
         </div>
@@ -96,7 +96,7 @@ export default function TradingScrollbar() {
 
       {/* Filled Wick - fills from top to bottom as user scrolls */}
       <motion.div 
-        className="absolute top-0 w-[2px] bg-gradient-to-b from-[#D4FF00]/80 to-[#D4FF00] shadow-[0_0_15px_rgba(212,255,0,0.8)] -z-10 origin-top rounded-full"
+        className="absolute top-0 w-[2px] bg-gradient-to-b from-white/40 to-white/10 shadow-[0_0_15px_rgba(255,255,255,0.3)] -z-10 origin-top rounded-full"
         style={{ 
           height: '100%',
           scaleY: smoothProgress 

@@ -13,7 +13,7 @@ export default function Origins() {
   };
 
   return (
-    <section data-chapter-id="origins" className="relative w-full py-32 z-10 bg-[#050505]">
+    <section id="section-origins" data-chapter-id="origins" className="relative w-full py-32 z-10 bg-[#050505]">
       <div className="container mx-auto px-6 md:px-12 xl:px-24 max-w-7xl">
 
         {/* Intro */}
@@ -27,11 +27,11 @@ export default function Origins() {
             transition={{ duration: 1 }}
             className="flex items-center space-x-6 mb-8"
           >
-            <div className="w-12 md:w-32 h-[1px] bg-gradient-to-r from-transparent to-[#D4FF00]/60" />
-            <span className="text-[#D4FF00] font-mono text-xs md:text-sm tracking-[0.3em] uppercase drop-shadow-[0_0_10px_rgba(212,255,0,0.5)]">
+            <div className="w-12 md:w-32 h-[1px] bg-gradient-to-r from-transparent to-white/20" />
+            <span className="text-white drop-shadow-md font-mono text-xs md:text-sm tracking-[0.3em] uppercase drop-shadow-md shadow-white/5">
               Before the trade
             </span>
-            <div className="w-12 md:w-32 h-[1px] bg-gradient-to-l from-transparent to-[#D4FF00]/60" />
+            <div className="w-12 md:w-32 h-[1px] bg-gradient-to-l from-transparent to-white/20" />
           </motion.div>
 
           <AnimatedText
@@ -101,7 +101,7 @@ export default function Origins() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent z-20 rounded-[2rem]" />
               <button
                 onClick={handleVeenaClick}
-                className="absolute top-6 right-6 w-14 h-14 rounded-full flex items-center justify-center bg-black/40 backdrop-blur-xl border border-white/20 hover:bg-[#D4FF00]/20 hover:border-[#D4FF00]/50 transition-all duration-500 z-30 tooltip-trigger group/btn"
+                className="absolute top-6 right-6 w-14 h-14 rounded-full flex items-center justify-center bg-black/40 backdrop-blur-xl border border-white/20 hover:bg-white/10 hover:border-white/20 transition-all duration-500 z-30 tooltip-trigger group/btn"
                 title="There's more to this story."
               >
                 <img src="/assets/icons/veena-line-art.svg" alt="Veena" className="w-6 h-6 opacity-70 group-hover/btn:opacity-100 group-hover/btn:scale-110 transition-transform duration-300 invert" />

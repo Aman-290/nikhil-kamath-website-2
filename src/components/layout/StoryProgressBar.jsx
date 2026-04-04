@@ -107,7 +107,7 @@ export default function StoryProgressBar() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -5 }}
                 transition={{ duration: 0.3 }}
-                className="font-clash text-xs md:text-sm font-medium text-[#D4FF00]"
+                className="font-clash text-xs md:text-sm font-medium text-white/80"
               >
                 {currentChapter.year}
               </motion.span>

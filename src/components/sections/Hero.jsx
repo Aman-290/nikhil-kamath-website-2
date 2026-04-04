@@ -100,7 +100,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.2 }}
           >
-            <div className="w-2 h-2 rounded-full bg-[#D4FF00] animate-pulse" />
+            <div className="w-2 h-2 rounded-full bg-white animate-pulse" />
             <span className="font-mono text-[11px] md:text-sm tracking-[0.2em] text-gray-300 uppercase">
               2003 &nbsp;·&nbsp; ₹8,000/mo &nbsp;·&nbsp; Age 17
             </span>

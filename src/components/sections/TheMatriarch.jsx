@@ -24,7 +24,7 @@ export default function TheMatriarch() {
       >
         <button 
           onClick={() => setIsOpen(false)}
-          className="fixed top-8 right-8 z-[110] w-12 h-12 flex items-center justify-center text-4xl font-mono hover:text-[#D4FF00] transition-colors mix-blend-difference"
+          className="fixed top-8 right-8 z-[110] w-12 h-12 flex items-center justify-center text-4xl font-mono hover:text-white transition-colors mix-blend-difference"
         >
           ×
         </button>
@@ -44,7 +44,7 @@ export default function TheMatriarch() {
         <div className="relative z-10 container mx-auto px-6 md:px-12 py-32 max-w-4xl min-h-screen flex flex-col justify-center">
           
           <motion.h2 
-            className="font-clash text-6xl md:text-8xl mb-40 mt-32 text-[#D4FF00]/80 drop-shadow-md"
+            className="font-clash text-6xl md:text-8xl mb-40 mt-32 text-white/80 drop-shadow-md"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 1 }}
@@ -52,14 +52,14 @@ export default function TheMatriarch() {
             Before Zerodha.
           </motion.h2>
 
-          <div className="space-y-40 pb-64 font-garamond text-3xl md:text-4xl leading-relaxed max-w-3xl border-l-2 border-[#D4FF00]/20 pl-8 md:pl-16">
+          <div className="space-y-40 pb-64 font-garamond text-3xl md:text-4xl leading-relaxed max-w-3xl border-l-2 border-white/10 pl-8 md:pl-16">
             <RevealLine>Before the podcast.</RevealLine>
             <RevealLine>Before the pledge.</RevealLine>
             <RevealLine>Before ₹27,000 Crore.</RevealLine>
             
             <RevealLine className="font-clash text-4xl md:text-5xl text-white">There was a woman with ₹500,<br/>a flower basket, and an appointment at Wipro.</RevealLine>
             
-            <RevealLine className="font-clash text-5xl md:text-7xl text-[#D4FF00]">Revathi Kamath.</RevealLine>
+            <RevealLine className="font-clash text-5xl md:text-7xl text-white">Revathi Kamath.</RevealLine>
             
             <RevealLine>Trained under Veena Venkatagiriyappa since childhood. Her day began with the Veena. Music before the market.</RevealLine>
             
@@ -73,11 +73,11 @@ export default function TheMatriarch() {
             
             <RevealLine>She went viral on Reddit in 2025. Playing the Veena at Rama Mandira. Her hands shook with love for the instrument next to an altar worth thousands of crores.</RevealLine>
             
-            <RevealLine>She is currently writing her autobiography.<br/>Her Instagram bio: <span className="italic block mt-4 text-[#D4FF00]">'Environmentalist and Veena player.'</span></RevealLine>
+            <RevealLine>She is currently writing her autobiography.<br/>Her Instagram bio: <span className="italic block mt-4 text-white">'Environmentalist and Veena player.'</span></RevealLine>
             
             <RevealLine>No mention of her sons.<br/>One of them is worth $3.3 billion.</RevealLine>
             
-            <RevealLine className="text-[#D4FF00] font-clash text-4xl md:text-6xl pt-20">
+            <RevealLine className="text-white font-clash text-4xl md:text-6xl pt-20">
               The entrepreneur in this family did not skip a generation.<br/>
               It began with her.
             </RevealLine>

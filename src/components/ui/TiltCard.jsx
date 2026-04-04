@@ -83,7 +83,7 @@ export default function TiltCard({
           className="absolute inset-0 rounded-[inherit] pointer-events-none z-30 transition-opacity duration-300"
           style={{
             opacity: isHovering ? 1 : 0,
-            background: `radial-gradient(${spotlightSize}px circle at ${spotlight.x}% ${spotlight.y}%, rgba(212,255,0,0.07), transparent 60%)`,
+            background: `radial-gradient(${spotlightSize}px circle at ${spotlight.x}% ${spotlight.y}%, rgba(255,255,255,0.1), transparent 60%)`,
           }}
         />
       )}
@@ -94,7 +94,7 @@ export default function TiltCard({
           className="absolute inset-0 rounded-[inherit] pointer-events-none z-20 transition-opacity duration-500"
           style={{
             opacity: isHovering ? 1 : 0,
-            boxShadow: 'inset 0 0 0 1px rgba(212,255,0,0.15)',
+            boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.1)',
           }}
         />
       )}

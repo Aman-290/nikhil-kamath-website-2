@@ -4,7 +4,7 @@ import LottiePlayer from '../ui/LottiePlayer';
 import { useEasterEggStore, EGG_IDS } from '../../hooks/useEasterEgg';
 
 // Note: since we're using dynamic imports for Lottie JSONs, we import them or fetch them.
-// In standard Vite, we can import them directly if they are in src, but since they are in public/, we can fetch them or just provide the URL string. 
+// In standard Vite, we can import them directly if they are in src, but since they are in public/, we can fetch them or provide the URL string. 
 // Wait, lottie-react requires the JSON object, not a URL string. 
 // We will need to fetch the JSON or import it.
 
@@ -33,7 +33,7 @@ export default function TheFlush() {
   };
 
   return (
-    <section className="relative w-full py-32 z-10 min-h-screen flex items-center">
+    <section id="section-flush" className="relative w-full py-32 z-10 min-h-screen flex items-center">
       <div className="container mx-auto px-6 md:px-12 xl:px-24 max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           

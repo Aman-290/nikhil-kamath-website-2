@@ -63,7 +63,7 @@ export default function Finale() {
 
           <AnimatedText mode="slide-up" delay={0}>
             <p className="font-satoshi text-2xl md:text-4xl text-primary-text">
-              Just a 17-year-old in a call centre<br/>who decided to figure it out.
+              A 17-year-old in a call centre<br/>who decided to figure it out.
             </p>
           </AnimatedText>
 
@@ -88,44 +88,6 @@ export default function Finale() {
 
         </div>
       </motion.div>
-
-      {/* Easter Egg Tracker (Bottom Left) */}
-      <div className="absolute bottom-8 left-6 md:left-12 z-50">
-        <button 
-          onClick={() => setShowEggList(!showEggList)}
-          className="text-xs font-mono text-secondary-text hover:text-accent-chartreuse transition-colors flex items-center space-x-2"
-        >
-          <span className="w-2 h-2 rounded-full bg-accent-chartreuse animate-pulse" />
-          <span>You've found [{foundCount}] of 12 hidden moments.</span>
-        </button>
-
-        {showEggList && (
-          <motion.div
-            className="absolute bottom-full left-0 mb-4 bg-surface-bg border border-white/10 p-6 rounded-xl w-64 shadow-2xl backdrop-blur-md"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3 }}
-          >
-             <h4 className="font-satoshi text-primary-text border-b border-white/10 pb-2 mb-4">The Secrets</h4>
-             <ul className="space-y-3 font-mono text-xs">
-               {[...Array(12)].map((_, i) => {
-                  const eggId = i + 1;
-                const isFound = foundEggs?.has(eggId);
-                  return (
-                    <li key={i} className="flex justify-between items-center">
-                       <span className="text-secondary-text">#{String(i + 1).padStart(2, '0')}</span>
-                       {isFound ? (
-                         <span className="text-accent-chartreuse">Found ✓</span>
-                       ) : (
-                         <span className="text-primary-text/20">███████</span>
-                       )}
-                    </li>
-                  )
-               })}
-             </ul>
-          </motion.div>
-        )}
-      </div>
 
       {/* Social Links — staggered entrance */}
       <div className="absolute bottom-8 right-6 md:right-12 z-50 flex items-center space-x-6">

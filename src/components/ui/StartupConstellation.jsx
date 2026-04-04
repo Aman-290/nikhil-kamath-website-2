@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import * as d3 from 'd3';
 
 const nodesData = [
-  { id: "Nikhil Kamath", group: "center", radius: 50, color: "#D4FF00", role: "Ecosystem Builder", desc: "The center of gravity", fx: 0, fy: 0 },
+  { id: "Nikhil Kamath", group: "center", radius: 50, color: "white", role: "Ecosystem Builder", desc: "The center of gravity", fx: 0, fy: 0 },
   
   // Inner orbit (Core pillars)
   { id: "Zerodha", group: "fintech", radius: 35, color: "#FFFFFF", role: "Co-founder", desc: "India's largest retail brokerage" },
@@ -165,7 +165,7 @@ export default function StartupConstellation() {
       .attr("font-family", "system-ui, -apple-system, sans-serif")
       .attr("font-size", d => d.id === "Nikhil Kamath" ? "14px" : "11px")
       .attr("font-weight", d => d.id === "Nikhil Kamath" ? "600" : "400")
-      .attr("fill", d => d.id === "Nikhil Kamath" ? "#D4FF00" : "#9CA3AF")
+      .attr("fill", d => d.id === "Nikhil Kamath" ? "white" : "#9CA3AF")
       .attr("letter-spacing", "0.5px")
       .attr("pointer-events", "none");
 
@@ -285,7 +285,7 @@ export default function StartupConstellation() {
     <div className="w-full relative h-[700px] bg-black border border-white/5 rounded-[2rem] overflow-hidden group">
       {/* Background ambient glow setup */}
       <div className="absolute inset-0 bg-gradient-to-b from-white/[0.02] to-transparent pointer-events-none" />
-      <div className="absolute -top-1/2 -left-1/2 w-full h-full bg-[#D4FF00] opacity-[0.03] blur-[120px] rounded-full mix-blend-screen pointer-events-none" />
+      <div className="absolute -top-1/2 -left-1/2 w-full h-full bg-white opacity-[0.03] blur-[120px] rounded-full mix-blend-screen pointer-events-none" />
 
       {/* Filter controls */}
       <div className="absolute top-6 left-6 right-6 flex flex-wrap items-center justify-between gap-4 z-10 pointer-events-auto">
@@ -297,7 +297,7 @@ export default function StartupConstellation() {
               onClick={() => setActiveFilter(cat.id)}
               className={`px-4 py-2 rounded-full text-xs font-medium transition-all duration-300 backdrop-blur-md ${
                 activeFilter === cat.id
-                  ? 'bg-[#D4FF00] text-black shadow-[0_0_15px_rgba(212,255,0,0.3)]'
+                  ? 'bg-white text-black shadow-md shadow-white/5'
                   : 'bg-white/5 text-white/60 hover:bg-white/10 hover:text-white border border-white/5'
               }`}
             >
@@ -344,7 +344,7 @@ export default function StartupConstellation() {
                 </div>
                 
                 {tooltip.data.role && (
-                  <div className="inline-block mt-1 px-2.5 py-1 mb-3 rounded border border-white/10 bg-white/5 text-[10px] uppercase tracking-widest text-[#D4FF00] font-medium">
+                  <div className="inline-block mt-1 px-2.5 py-1 mb-3 rounded border border-white/10 bg-white/5 text-[10px] uppercase tracking-widest text-white font-medium">
                     {tooltip.data.role}
                   </div>
                 )}
@@ -365,8 +365,8 @@ export default function StartupConstellation() {
         SYS.NODE.NETWORK.V2
       </div>
       <div className="absolute bottom-6 right-6 flex items-center gap-2">
-        <div className="w-2 h-2 rounded-full bg-[#D4FF00] animate-pulse" />
-        <span className="text-[10px] text-[#D4FF00] uppercase tracking-widest font-mono">Live Sync</span>
+        <div className="w-2 h-2 rounded-full bg-white animate-pulse" />
+        <span className="text-[10px] text-white uppercase tracking-widest font-mono">Live Sync</span>
       </div>
     </div>
   );

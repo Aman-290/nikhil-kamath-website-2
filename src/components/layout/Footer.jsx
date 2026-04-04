@@ -31,7 +31,7 @@ export default function Footer() {
         <motion.div
           className="h-full w-[200%]"
           style={{
-            background: 'linear-gradient(90deg, transparent, rgba(212,255,0,0.3), #D4FF00, rgba(212,255,0,0.3), transparent, transparent)',
+            background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.1), rgba(255,255,255,0.3), rgba(255,255,255,0.1), transparent, transparent)',
             backgroundSize: '50% 100%',
           }}
           animate={{ x: ['-50%', '0%'] }}

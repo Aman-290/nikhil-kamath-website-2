@@ -7,30 +7,94 @@ gsap.registerPlugin(ScrollTrigger);
 const phases = [
   {
     title: "PENNY STOCKS",
-    years: "2003-2005",
-    desc: "Betting blindly. Hoping a company does well. The market rewards beginners to keep them gambling. It rewarded him: Marsoft, ₹4 → ₹20. It also punished him. Many times.",
+    boldLine: "Blind luck. Both ways.",
+    desc: "Marsoft: ₹4 → ₹20. No reason. He was hooked anyway."
   },
   {
     title: "FUNDAMENTALS",
-    years: "2005-2008",
-    desc: "He read Graham. He thought fundamentals were the answer. 'Companies do not move based on how well they are doing fundamentally. Companies are a factor of sentiment.' The lesson: the market is not rational. It is human.",
+    boldLine: "Companies are sentiment.",
+    desc: "Benjamin Graham was right about value. Wrong about timing."
   },
   {
-    title: "TECHNICAL ANALYSIS",
-    years: "2008-2011",
-    desc: "Moving average crossovers. 20-50 interval. Steve Nison's candlestick books. 'Technical analysis is a lagging indicator.' By the time the signal appears, the move has already started.",
+    title: "TECHNICALS",
+    boldLine: "The signal arrives late.",
+    desc: "By the time the chart shows the move, it's already over."
   },
   {
     title: "QUANTITATIVE",
-    years: "2011-2015",
-    desc: "Pair trading. Delta hedging. Statistical arbitrage. Writing algorithms for correlation and mean regression. Shifted from big directional bets to 'catching smaller pieces — 20-30 basis points — many times over.' Kamath & Associates: 55% post-tax returns, year on year.",
+    boldLine: "55% post-tax. Year on year.",
+    desc: "Pair trading. Delta hedging. Kamath & Associates. No MBA required."
   },
   {
     title: "SENTIMENT",
-    years: "2015-Present",
-    desc: "Promoter behavior. Institutional money flows. Geopolitical shifts. Interest rate cycles. The market is a human system. Understand the humans, and the system follows.",
+    boldLine: "Understand the humans.",
+    desc: "Promoter behavior. Geopolitical shifts. The market is people."
   }
 ];
+
+
+const PhaseBackground = ({ index }) => {
+  if (index === 0) {
+    return (
+      <div className="absolute inset-0 z-0 overflow-hidden opacity-30 select-none">
+        {[...Array(20)].map((_, i) => (
+          <div 
+            key={i} 
+            className="absolute rounded-full bg-white/40"
+            style={{
+              width: '2px', height: '2px',
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`,
+              animation: `pulse ${Math.random() * 3 + 2}s infinite ${Math.random() * 2}s`
+            }}
+          />
+        ))}
+      </div>
+    );
+  }
+  if (index === 1) {
+    return (
+      <div 
+        className="absolute inset-0 z-0 opacity-50"
+        style={{
+          background: 'repeating-linear-gradient(transparent, transparent 31px, rgba(255,255,255,0.04) 31px, rgba(255,255,255,0.04) 32px)'
+        }}
+      />
+    );
+  }
+  if (index === 2) {
+    return (
+      <div className="absolute right-0 bottom-0 z-0 opacity-[0.08]">
+        <svg width="200" height="200" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="20" y="40" width="10" height="30" fill="white" />
+          <line x1="25" y1="20" x2="25" y2="80" stroke="white" strokeWidth="2" />
+          <rect x="45" y="25" width="10" height="40" fill="white" />
+          <line x1="50" y1="10" x2="50" y2="70" stroke="white" strokeWidth="2" />
+          <rect x="70" y="50" width="10" height="20" fill="white" />
+          <line x1="75" y1="30" x2="75" y2="90" stroke="white" strokeWidth="2" />
+        </svg>
+      </div>
+    );
+  }
+  if (index === 3) {
+    return (
+      <div className="absolute right-[-10%] top-1/4 z-0 opacity-[0.05] select-none font-mono text-xl whitespace-pre" style={{fontFamily: 'JetBrains Mono, monospace'}}>
+        correlation(A,B) = 0.87<br />mean_revert()<br />delta_hedge()
+      </div>
+    );
+  }
+  if (index === 4) {
+    return (
+      <div 
+        className="absolute inset-0 z-0"
+        style={{
+          background: 'radial-gradient(circle at center, rgba(255,255,255,0.1) 0%, transparent 60%)'
+        }}
+      />
+    );
+  }
+  return null;
+};
 
 export default function FivePhases() {
   const containerRef = useRef(null);
@@ -75,7 +139,7 @@ export default function FivePhases() {
   }, []);
 
   return (
-    <section 
+    <section id="section-phases" 
       ref={containerRef} 
       className="relative w-full bg-[#050505] text-white flex flex-col md:h-screen overflow-hidden font-satoshi z-20"
       data-chapter-id="five-phases"
@@ -101,20 +165,19 @@ export default function FivePhases() {
               {/* Subtle Lighting Accent */}
               <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 blur-3xl rounded-full translate-x-1/2 -translate-y-1/2" />
               
-              <div className="relative z-10">
-                <span className="text-white/40 font-mono text-xs tracking-widest uppercase">{phase.years}</span>
-                <h3 className="font-clash text-2xl text-white mt-4 mb-4 tracking-tight">
-                  <span className="text-white/30 mr-2">0{i+1}.</span>{phase.title}
+              <PhaseBackground index={i} />
+              
+              <div className="relative z-10 mt-12 pointer-events-none">
+                <h3 className="font-clash text-2xl text-white mb-2 tracking-tight uppercase">
+                  {phase.title}
                 </h3>
+                <p className="font-satoshi text-white text-lg leading-snug mb-3 font-medium flex flex-col gap-1">"{phase.boldLine}"</p>
                 <p className="font-satoshi text-gray-400 leading-relaxed text-base">{phase.desc}</p>
               </div>
 
-              {/* Stylized Number Watermark */}
-              <div className="absolute -bottom-6 -right-4 pointer-events-none select-none">
-                <span 
-                  className="font-clash font-bold text-transparent text-8xl" 
-                  style={{ WebkitTextStroke: '1px rgba(255,255,255,0.05)' }}
-                >
+              {/* Decorative Number */}
+              <div className="absolute top-6 right-6 pointer-events-none select-none z-[1]">
+                <span className="font-clash text-[6rem] leading-none font-bold text-white/[0.06]">
                   0{i+1}
                 </span>
               </div>
@@ -126,7 +189,7 @@ export default function FivePhases() {
            <p className="font-satoshi text-gray-400 text-lg leading-relaxed border-l-[3px] border-white/20 pl-6">
             From one borrowed laptop in a call centre to managing High Net Worth portfolios for India's elite.<br/>
             The progression took seven years. No MBA. No Bloomberg terminal training program.<br/>
-            <span className="text-white font-medium mt-4 block">Just the market and the willingness to be wrong, expensively, repeatedly.</span>
+            <span className="text-white font-medium mt-4 block">Only the market and the willingness to be wrong, expensively, repeatedly.</span>
            </p>
         </div>
       </div>
@@ -163,20 +226,19 @@ export default function FivePhases() {
               <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
               <div className="absolute -top-32 -right-32 w-64 h-64 bg-white/10 blur-[100px] rounded-full group-hover:bg-white/15 transition-colors duration-700 pointer-events-none" />
               
-              <div className="relative z-10">
-                <span className="text-white/40 font-mono text-sm tracking-[0.2em] uppercase">{phase.years}</span>
-                <h3 className="font-clash text-3xl lg:text-4xl text-white mt-6 mb-6 tracking-tight">{phase.title}</h3>
+              <PhaseBackground index={i} />
+              
+              <div className="relative z-10 mt-12 pointer-events-none">
+                <h3 className="font-clash text-3xl lg:text-4xl text-white mb-4 tracking-tight uppercase">{phase.title}</h3>
+                <p className="font-satoshi text-white text-2xl leading-snug mb-4 font-medium italic">"{phase.boldLine}"</p>
                 <p className="font-satoshi text-gray-400 text-lg leading-relaxed font-light">
                   {phase.desc}
                 </p>
               </div>
 
               {/* Huge stylized transparent stroke Phase Number */}
-              <div className="absolute -bottom-16 -right-10 pointer-events-none select-none mix-blend-screen">
-                <span 
-                  className="font-clash text-[14rem] leading-none font-bold text-transparent transition-all duration-700 group-hover:-translate-y-4" 
-                  style={{ WebkitTextStroke: '2px rgba(255,255,255,0.06)' }}
-                >
+              <div className="absolute top-6 right-6 pointer-events-none select-none z-[1]">
+                <span className="font-clash text-[6rem] leading-none font-bold text-white/[0.06]">
                   0{i+1}
                 </span>
               </div>
@@ -188,7 +250,7 @@ export default function FivePhases() {
              <p className="font-satoshi text-gray-400 text-2xl lg:text-3xl leading-snug border-l-[3px] border-white/20 pl-10 font-light">
               From one borrowed laptop in a call centre to managing High Net Worth portfolios for India's elite.<br/><br/>
               The progression took seven years.<br/>No MBA. No Bloomberg terminal training program.<br/><br/>
-              <span className="text-white font-medium block mt-2">Just the market and the willingness to be wrong, expensively, repeatedly.</span>
+              <span className="text-white font-medium block mt-2">Only the market and the willingness to be wrong, expensively, repeatedly.</span>
              </p>
           </div>
         </div>

@@ -27,7 +27,7 @@ export default function SectionDivider({
   const lineWidth = useTransform(scrollYProgress, [0.2, 0.6], ['0%', '100%']);
   const glowOpacity = useTransform(scrollYProgress, [0.3, 0.5, 0.7], [0, 1, 0]);
 
-  const accentColor = accent ? '#D4FF00' : 'rgba(255,255,255,0.3)';
+  const accentColor = accent ? 'white' : 'rgba(255,255,255,0.3)';
 
   return (
     <div ref={ref} className={`relative py-20 md:py-28 flex items-center justify-center overflow-hidden ${className}`}>
@@ -47,7 +47,7 @@ export default function SectionDivider({
             style={{
               opacity: glowOpacity,
               background: accent
-                ? 'linear-gradient(90deg, transparent, rgba(212,255,0,0.4), transparent)'
+                ? 'linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent)'
                 : 'linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent)',
             }}
           />
@@ -59,7 +59,7 @@ export default function SectionDivider({
         {chapter && (
           <motion.span
             className="font-mono text-[10px] md:text-xs tracking-[0.4em] uppercase"
-            style={{ color: accent ? '#D4FF00' : 'rgba(255,255,255,0.4)' }}
+            style={{ color: accent ? 'white' : 'rgba(255,255,255,0.4)' }}
             initial={{ opacity: 0, y: 10 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.3 }}
@@ -71,7 +71,7 @@ export default function SectionDivider({
         {year && (
           <motion.span
             className="font-clash text-2xl md:text-3xl font-medium tracking-tight"
-            style={{ color: accent ? '#D4FF00' : 'rgba(255,255,255,0.15)' }}
+            style={{ color: accent ? 'white' : 'rgba(255,255,255,0.15)' }}
             initial={{ opacity: 0, scale: 0.8 }}
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 0.8, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
@@ -83,7 +83,7 @@ export default function SectionDivider({
         {/* Small diamond marker */}
         <motion.div
           className="w-2 h-2 rotate-45"
-          style={{ backgroundColor: accent ? '#D4FF00' : 'rgba(255,255,255,0.2)' }}
+          style={{ backgroundColor: accent ? 'white' : 'rgba(255,255,255,0.2)' }}
           initial={{ opacity: 0, scale: 0 }}
           animate={isInView ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.5, delay: 0.7 }}
@@ -96,7 +96,7 @@ export default function SectionDivider({
         style={{
           opacity: glowOpacity,
           background: accent
-            ? 'linear-gradient(180deg, transparent, rgba(212,255,0,0.15), transparent)'
+            ? 'linear-gradient(180deg, transparent, rgba(255,255,255,0.1), transparent)'
             : 'linear-gradient(180deg, transparent, rgba(255,255,255,0.05), transparent)',
         }}
       />

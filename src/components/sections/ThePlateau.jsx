@@ -1,14 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import ChessAccuracyChart from '../ui/ChessAccuracyChart';
-import RentOwnToggle from '../ui/RentOwnToggle';
 
 export default function ThePlateau() {
   return (
-    <section data-chapter-id="the-plateau" className="relative w-full py-32 z-10 bg-[#050505]">
+    <section id="section-plateau" data-chapter-id="the-plateau" className="relative w-full py-32 z-10 bg-[#050505] cursor-default md: ">
       
       {/* Ambient background glows */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#D4FF00]/[0.02] to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/40/[0.02] to-transparent pointer-events-none" />
 
       {/* Intro sequence */}
       <div className="container mx-auto px-6 md:px-12 xl:px-24 max-w-7xl pt-24 mb-48 relative z-10 flex flex-col items-center">
@@ -20,10 +19,10 @@ export default function ThePlateau() {
           transition={{ duration: 1 }}
         >
           <h2 className="font-clash text-5xl md:text-[7rem] lg:text-[8rem] text-white font-medium tracking-tight leading-[0.9] mb-8 text-center text-balance mx-auto">
-            Every great line<br />has a <span className="text-white/30 italic">correction.</span>
+            Every great chart<br />has one <span className="text-white/30 italic">anomaly.</span>
           </h2>
           
-          <p className="font-satoshi text-2xl md:text-4xl text-[#D4FF00] font-medium mb-12 drop-shadow-[0_0_15px_rgba(212,255,0,0.3)]">
+          <p className="font-satoshi text-2xl md:text-4xl text-white font-medium mb-12 drop-shadow-md shadow-white/5">
             Not a crash. A human moment.<br/>
             Priced in. Recovered.
           </p>
@@ -65,6 +64,13 @@ export default function ThePlateau() {
                <div className="absolute inset-0 bg-gradient-to-t from-[#111] via-[#111]/80 to-transparent" />
             </div>
 
+            {/* Ambient Kasparov Quote */}
+            <div className="absolute inset-0 z-0 flex items-center justify-center px-12 pointer-events-none select-none">
+              <p className="font-serif italic text-[1.1rem] opacity-[0.08] text-white text-center leading-loose">
+                "The game is not about the pieces. It's about the positions you never see coming."
+              </p>
+            </div>
+
             <div className="relative z-10 mb-8">
                <div className="inline-block border border-[#FF4444]/20 bg-[#FF4444]/10 text-[#FF4444] px-4 py-1.5 rounded-full font-mono text-[10px] uppercase tracking-widest mb-6">
                  Checkmate Covid Charity Exhibition
@@ -77,7 +83,7 @@ export default function ThePlateau() {
                </p>
             </div>
 
-            <div className="relative z-10 bg-[#050505]/80 backdrop-blur-md rounded-2xl border border-white/5 p-6 w-full">
+            <div className="relative z-10 bg-[#050505] cursor-default md:/80 backdrop-blur-md rounded-2xl border border-white/5 p-6 w-full">
               <ChessAccuracyChart />
             </div>
           </motion.div>
@@ -92,9 +98,9 @@ export default function ThePlateau() {
           >
             <div className="space-y-12">
               
-              <div className="relative pl-8 before:absolute before:left-0 before:top-4 before:bottom-0 before:w-px before:bg-gradient-to-b before:from-[#D4FF00] before:to-white/10">
-                <div className="absolute left-0 top-3 w-[3px] h-8 bg-[#D4FF00] -translate-x-[1px] shadow-[0_0_10px_rgba(212,255,0,0.5)]" />
-                <span className="font-mono text-[10px] tracking-[0.2em] text-[#D4FF00] uppercase mb-2 block">The Execution</span>
+              <div className="relative pl-8 before:absolute before:left-0 before:top-4 before:bottom-0 before:w-px before:bg-gradient-to-b before:from-white/40 before:to-white/10">
+                <div className="absolute left-0 top-3 w-[3px] h-8 bg-white/10 -translate-x-[1px] shadow-md shadow-white/5" />
+                <span className="font-mono text-[10px] tracking-[0.2em] text-white uppercase mb-2 block">e2-e4 · June 13, 2021</span>
                 <p className="font-satoshi text-xl text-white leading-relaxed mb-4">
                   Nine games simultaneously. Viswanathan Anand won eight easily. <span className="text-white/50">Nikhil won.</span>
                 </p>
@@ -102,7 +108,7 @@ export default function ThePlateau() {
 
               <div className="relative pl-8 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-px before:bg-white/10">
                 <div className="absolute left-0 top-3 w-[3px] h-8 bg-[#FF4444] -translate-x-[1px]" />
-                <span className="font-mono text-[10px] tracking-[0.2em] text-[#FF4444] uppercase mb-2 block">The Fallout</span>
+                <span className="font-mono text-[10px] tracking-[0.2em] text-[#FF4444] uppercase mb-2 block">Nf3 · Chess.com ban</span>
                 <p className="font-satoshi text-xl text-white/80 leading-relaxed mb-6">
                   His previous 30 games on Chess.com ranged between 0.6% and 10.9%. Three novices had routed him in under 12 moves. 
                 </p>
@@ -115,7 +121,7 @@ export default function ThePlateau() {
 
               <div className="relative pl-8 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-px before:bg-gradient-to-b before:from-white/10 before:to-transparent">
                 <div className="absolute left-0 top-3 w-[3px] h-8 bg-white/40 -translate-x-[1px]" />
-                <span className="font-mono text-[10px] tracking-[0.2em] text-white/40 uppercase mb-2 block">The Resolution</span>
+                <span className="font-mono text-[10px] tracking-[0.2em] text-white/40 uppercase mb-2 block">0-0 · 24 hours later</span>
                 <p className="font-satoshi text-xl text-white/80 leading-relaxed mb-6">
                   24 hours later, <span className="text-white font-medium">at Viswanathan Anand's personal request</span>, the account was restored.
                 </p>
@@ -134,24 +140,6 @@ export default function ThePlateau() {
           </motion.div>
 
         </div>
-      </div>
-
-      {/* Rent vs Own Toggle Controversy */}
-      <div className="container mx-auto px-4 md:px-8 xl:px-16 max-w-6xl relative z-10 pb-32">
-        <div className="flex items-center gap-6 mb-16">
-          <span className="text-white/40 font-mono text-[10px] tracking-[0.2em] uppercase shrink-0">The Real Estate Shift</span>
-          <div className="h-px bg-gradient-to-l from-white/20 to-transparent flex-grow" />
-          <h3 className="font-clash text-4xl sm:text-5xl text-white font-medium tracking-tight">The Paradigm</h3>
-        </div>
-
-        <motion.div
-           initial={{ opacity: 0, y: 30 }}
-           whileInView={{ opacity: 1, y: 0 }}
-           viewport={{ once: true }}
-           transition={{ duration: 0.8 }}
-        >
-          <RentOwnToggle />
-        </motion.div>
       </div>
 
     </section>

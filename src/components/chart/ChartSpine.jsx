@@ -175,7 +175,7 @@ export default function ChartSpine() {
                       fontFamily="monospace"
                       fontWeight="600"
                       letterSpacing="0.05em"
-                      className="uppercase"
+                      className="uppercase md:block hidden"
                     >
                       {milestone.label}
                     </text>

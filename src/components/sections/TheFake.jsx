@@ -3,10 +3,10 @@ import { motion } from 'framer-motion';
 
 export default function TheFake() {
   return (
-    <section data-chapter-id="the-fake" className="relative w-full py-40 z-10 min-h-screen flex flex-col justify-center bg-[#050505] overflow-hidden">
+    <section id="section-fake" data-chapter-id="the-fake" className="relative w-full py-40 z-10 min-h-screen flex flex-col justify-center bg-[#050505] overflow-hidden">
 
       {/* Ambient background glows */}
-      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#D4FF00]/[0.03] blur-[150px] rounded-full mix-blend-screen pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-white/5 blur-[150px] rounded-full mix-blend-screen pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-white/[0.02] blur-[120px] rounded-full pointer-events-none" />
 
       {/* Background Image Layer */}
@@ -32,8 +32,8 @@ export default function TheFake() {
           className="mb-32 max-w-5xl"
         >
           <div className="mb-8 flex items-center gap-6">
-            <div className="w-16 h-1 bg-gradient-to-r from-[#D4FF00] to-transparent rounded-full" />
-            <span className="font-mono text-[11px] tracking-[0.3em] uppercase text-[#D4FF00]">Origin: Bangalore, 2003</span>
+            <div className="w-16 h-1 bg-gradient-to-r from-white/40 to-transparent rounded-full" />
+            <span className="font-mono text-[11px] tracking-[0.3em] uppercase text-white/60">Origin: Bangalore, 2003</span>
           </div>
 
           <h2 className="font-clash text-6xl md:text-[8rem] lg:text-[10rem] text-white leading-[0.9] font-medium tracking-tight mb-6">
@@ -62,7 +62,7 @@ export default function TheFake() {
                
                {/* The Fake Certificate Visual - Positioned Absolutely to save space */}
                <div className="absolute right-[-20px] top-8 w-48 md:right-4 md:top-12 md:w-60 lg:w-64 shrink-0 z-10 hidden sm:block pointer-events-none">
-                 <div className="absolute inset-0 bg-[#D4FF00]/20 blur-[50px] rounded-full" />
+                 <div className="absolute inset-0 bg-white/10 blur-[50px] rounded-full" />
                  <img
                    src="/assets/props/fake-birth-certificate-mockup.png"      
                    alt="Forged Certificate"
@@ -76,9 +76,9 @@ export default function TheFake() {
                  </h3>
 
                  <div className="flex flex-col sm:flex-row gap-6 items-start sm:items-center">
-                   <div className="bg-[#D4FF00]/10 border border-[#D4FF00]/20 px-8 py-4 rounded-xl backdrop-blur-sm shrink-0">
-                     <p className="text-[#D4FF00] font-clash text-4xl font-medium tracking-tight">₹8,000</p>
-                     <p className="text-[#D4FF00]/60 font-mono text-[10px] uppercase tracking-widest mt-1">Per Month Salary</p>
+                   <div className="bg-white/10 border border-white/20 px-8 py-4 rounded-xl backdrop-blur-sm shrink-0">
+                     <p className="text-white/60 font-clash text-4xl font-medium tracking-tight">₹8,000</p>
+                     <p className="text-white/60/60 font-mono text-[10px] uppercase tracking-widest mt-1">Per Month Salary</p>
                    </div>
                    <p className="font-satoshi text-white/50 text-lg leading-relaxed flex-1 sm:border-l-2 border-white/10 sm:pl-6 shrink">
                      While colleagues slept, he traded penny stocks with what was left of his salary. The market was open. He was in it before he was legally allowed to be.
@@ -104,10 +104,10 @@ export default function TheFake() {
                  <div className="text-white/30 text-sm">→</div>
                  <div className="px-4 py-1.5 rounded bg-white/5 border border-white/10 font-mono text-[#FF4444] text-xs">Bought ₹4</div>
                  <div className="text-white/30 text-sm">→</div>
-                 <div className="px-4 py-1.5 rounded bg-[#D4FF00]/10 border border-[#D4FF00]/20 font-mono text-[#D4FF00] text-xs">Sold ₹20</div>
+                 <div className="px-4 py-1.5 rounded bg-white/10 border border-white/20 font-mono text-white/60 text-xs">Sold ₹20</div>
                </div>
 
-               <div className="border-l-[3px] border-[#D4FF00] pl-6 py-2 mb-8 bg-gradient-to-r from-[#D4FF00]/5 to-transparent pr-4 rounded-r-lg">
+               <div className="border-l-[3px] border-[#D4FF00] pl-6 py-2 mb-8 bg-gradient-to-r from-white/40/5 to-transparent pr-4 rounded-r-lg">
                  <p className="font-satoshi text-white/80 text-lg md:text-xl italic leading-relaxed">
                    "There was absolutely no reason why it should have gone up. It was blind luck. But even if I were to lose money 20 times in the future... I knew this is a profession I would continue for the rest of my life."
                  </p>
@@ -123,7 +123,7 @@ export default function TheFake() {
 
             {/* The Manager Card */}
             <motion.div
-              className="bg-[#D4FF00] p-10 md:p-12 rounded-[2rem] shadow-[0_0_50px_rgba(212,255,0,0.15)] relative overflow-hidden"
+              className="bg-white/10 p-10 md:p-12 rounded-[2rem] shadow-md shadow-white/5 relative overflow-hidden"
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -133,7 +133,7 @@ export default function TheFake() {
                <h3 className="font-clash text-4xl md:text-5xl text-black font-medium mb-6 leading-tight">The Manager's Deal</h3>
 
                <p className="font-satoshi text-black/80 text-xl leading-relaxed mb-8">
-                 He got so good that his call centre manager stopped requiring him to show up. Just marked him present every day.
+                 He got so good that his call centre manager stopped requiring him to show up. He marked him present every day.
                  <br/><br/><span className="font-semibold text-black">Let him manage the entire team's money instead.</span>
                </p>
 

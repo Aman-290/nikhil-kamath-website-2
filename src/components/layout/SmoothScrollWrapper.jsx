@@ -19,6 +19,7 @@ export default function SmoothScrollWrapper({ children }) {
       infinite: false,
     });
 
+    window.__lenis = lenis;
     lenis.on('scroll', ScrollTrigger.update);
 
     const raf = (time) => {

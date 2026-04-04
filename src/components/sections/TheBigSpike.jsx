@@ -16,7 +16,7 @@ export default function TheBigSpike() {
   }, []);
 
   return (
-    <section data-chapter-id="the-big-spike" className="relative w-full z-10 bg-[#050505] overflow-hidden">     
+    <section id="section-spike" data-chapter-id="the-big-spike" className="relative w-full z-10 bg-[#050505] overflow-hidden">     
 
       {/* Background ambient glow setup */}
       <div className="absolute inset-0 bg-gradient-to-b from-white/[0.02] to-transparent pointer-events-none" />
@@ -27,7 +27,7 @@ export default function TheBigSpike() {
            {coffeeAnim && <LottiePlayer animationData={coffeeAnim} loop={false} className="w-64 h-64" />}
         </div>
 
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#D4FF00] opacity-[0.04] blur-[150px] rounded-full mix-blend-screen pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-white opacity-[0.02] blur-[150px] rounded-full mix-blend-screen pointer-events-none" />
 
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -55,14 +55,14 @@ export default function TheBigSpike() {
               mode="split-chars"
               text="Zero Barriers."
               tag="h2"
-              className="font-clash text-7xl md:text-[9rem] text-[#D4FF00] leading-[1] font-bold tracking-tight mt-12 drop-shadow-[0_0_30px_rgba(212,255,0,0.3)]"
+              className="font-clash text-7xl md:text-[9rem] text-white leading-[1] font-bold tracking-tight mt-12 drop-shadow-md"
               delay={0.8}
               stagger={0.04}
             />
           </div>
 
           <div className="mt-12 pt-8 flex flex-col items-center justify-center gap-8">
-             <div className="w-[1px] h-32 bg-gradient-to-b from-[#D4FF00] to-transparent" />
+             <div className="w-[1px] h-32 bg-gradient-to-b from-white/40 to-transparent" />
           </div>
         </motion.div>
       </div>
@@ -81,7 +81,7 @@ export default function TheBigSpike() {
             transition={{ duration: 0.8 }}
           >
              <div className="relative w-full aspect-[3/4] rounded-[2rem] overflow-hidden border border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.5)]">
-               <div className="absolute inset-0 bg-[#D4FF00]/10 mix-blend-overlay z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+               <div className="absolute inset-0 bg-white/10 mix-blend-overlay z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                <img src="/assets/images/zerodha-first-office-2010.webp" alt="Zerodha First Office 2010" className="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-all duration-700" />
                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10" />
                <div className="absolute bottom-8 left-8 right-8 z-20">
@@ -99,7 +99,7 @@ export default function TheBigSpike() {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-[#D4FF00]/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-br from-white/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
               <span className="text-white/40 font-mono text-[11px] tracking-[0.2em] uppercase mb-8 block">The Etymology</span>
               
               <div className="flex flex-col xl:flex-row gap-8 xl:items-start mb-10">
@@ -114,7 +114,7 @@ export default function TheBigSpike() {
                 
                 {/* Kamath Brothers Working Image embedded here */}
                 <div className="w-full xl:w-48 h-48 rounded-xl overflow-hidden shrink-0 border border-white/10 relative">
-                  <div className="absolute inset-0 bg-[#D4FF00]/5 mix-blend-overlay" />
+                  <div className="absolute inset-0 bg-white/5 mix-blend-overlay" />
                   <img src="/assets/images/kamath-brothers-working.webp" alt="Brothers Working" className="w-full h-full object-cover opacity-80" />
                 </div>
               </div>
@@ -124,14 +124,14 @@ export default function TheBigSpike() {
                     <div className="text-white/40 uppercase tracking-widest font-mono shrink-0 text-xs mt-1 w-24">Cartel</div>
                     <div className="font-satoshi text-white/70 text-base leading-relaxed">
                         <del className="opacity-40 text-white/50">0.5% per trade.</del><br/>
-                        On ₹1 lakh × 100 trades/year:<br/>
+                        On <span className="font-mono">₹1 lakh</span> × 100 trades/year:<br/>
                         <span className="text-white/90">₹50,000 in fees alone.</span> Before a single rupee of profit.
                     </div>
                 </div>
-                <div className="bg-[#D4FF00]/10 border border-[#D4FF00]/20 p-6 rounded-2xl flex flex-col sm:flex-row gap-6 items-start text-sm backdrop-blur-sm"> 
-                    <div className="text-[#D4FF00] uppercase tracking-widest font-mono shrink-0 text-xs mt-1 w-24">The Fix</div>
-                    <div className="font-satoshi text-[#D4FF00] font-medium text-lg leading-relaxed">
-                        ₹20 flat fee.<br/>Zero brokerage on equity delivery.      
+                <div className="bg-white/10 border border-white/20 p-6 rounded-2xl flex flex-col sm:flex-row gap-6 items-start text-sm backdrop-blur-sm"> 
+                    <div className="text-white uppercase tracking-widest font-mono shrink-0 text-xs mt-1 w-24">The Fix</div>
+                    <div className="font-satoshi text-white font-medium text-lg leading-relaxed">
+                        <span className="font-mono">₹20</span> flat fee.<br/>Zero brokerage on equity delivery.      
                     </div>
                 </div>
               </div>
@@ -161,9 +161,9 @@ export default function TheBigSpike() {
                  </li>
                </ul>
 
-               <div className="border-l-[4px] border-[#D4FF00] pl-8 py-4 bg-gradient-to-r from-[#D4FF00]/5 to-transparent pr-4 rounded-r-lg">
+               <div className="border-l-[4px] border-[#D4FF00] pl-8 py-4 bg-gradient-to-r from-white/40/5 to-transparent pr-4 rounded-r-lg">
                    <p className="font-clash text-2xl sm:text-3xl text-white uppercase tracking-wide leading-tight">
-                       Zero external capital.<br/>Then. <span className="text-[#D4FF00]">Or ever.</span>
+                       Zero external capital.<br/>Then. <span className="text-white">Or ever.</span>
                    </p>
                    <p className="font-satoshi text-sm sm:text-base text-white/50 mt-4 italic font-medium">
                      Funded entirely by Nikhil's trading profits.
@@ -188,16 +188,16 @@ export default function TheBigSpike() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.12, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                className="bg-[#0A0A0A] py-12 px-8 border border-white/10 rounded-[2rem] flex flex-col justify-center items-center text-center relative overflow-hidden group hover:border-[#D4FF00]/30 transition-colors shadow-[0_0_30px_rgba(0,0,0,0.5)] h-full"
+                className="bg-[#0A0A0A] py-12 px-8 border border-white/10 rounded-[2rem] flex flex-col justify-center items-center text-center relative overflow-hidden group hover:border-white/30 transition-colors shadow-[0_0_30px_rgba(0,0,0,0.5)] h-full"
               >
-                <div className="absolute inset-0 bg-[#D4FF00]/0 group-hover:bg-[#D4FF00]/[0.03] transition-colors duration-500" />
+                <div className="absolute inset-0 bg-white/10 group-hover:bg-white/5 transition-colors duration-500" />
                 <CountUpStat
                   value={stat.value}
                   duration={2000}
                   delay={i * 150}
                   className="text-4xl md:text-5xl lg:text-6xl font-clash font-medium text-white mb-4 tracking-tight relative z-10 drop-shadow-lg"
                 />
-                <div className="text-[#D4FF00] font-mono uppercase tracking-[0.2em] text-[11px] relative z-10 bg-[#D4FF00]/10 px-4 py-1.5 rounded-full">{stat.label}</div>
+                <div className="text-white font-mono uppercase tracking-[0.2em] text-[11px] relative z-10 bg-white/10 px-4 py-1.5 rounded-full">{stat.label}</div>
               </motion.div>
             </TiltCard>
           ))}
@@ -206,9 +206,9 @@ export default function TheBigSpike() {
         {/* The Principles (The Code) */}
         <div className="mb-48 grid lg:grid-cols-12 gap-16 items-start">
           <div className="lg:col-span-4 lg:sticky lg:top-32 relative">
-             <div className="absolute -left-12 top-0 w-24 h-24 bg-[#D4FF00]/20 blur-[50px] rounded-full pointer-events-none" />
+             <div className="absolute -left-12 top-0 w-24 h-24 bg-white/10 blur-[50px] rounded-full pointer-events-none" />
              <h3 className="text-white font-clash text-6xl md:text-7xl font-semibold tracking-tight mb-8 relative z-10">The<br/>Code</h3>
-             <div className="w-20 h-1.5 bg-[#D4FF00] rounded-full shadow-[0_0_15px_rgba(212,255,0,0.5)]" />
+             <div className="w-20 h-1.5 bg-white rounded-full shadow-md shadow-white/5" />
           </div>
           <div className="lg:col-span-8">
             <div className="space-y-4">
@@ -230,7 +230,7 @@ export default function TheBigSpike() {
                   transition={{ delay: i * 0.05, duration: 0.5 }}
                   className="flex gap-6 items-center bg-[#111] border border-white/5 p-6 sm:p-8 rounded-2xl hover:bg-[#151515] transition-colors group"
                 >
-                  <span className="text-[#D4FF00]/50 group-hover:text-[#D4FF00] font-mono text-xl shrink-0 transition-colors">{"//"}</span>
+                  <span className="text-white/50 group-hover:text-white font-mono text-xl shrink-0 transition-colors">{"//"}</span>
                   <p className="font-satoshi text-white/80 text-lg sm:text-xl leading-relaxed">{principle}</p>
                 </motion.div>
               ))}
@@ -269,16 +269,16 @@ export default function TheBigSpike() {
             </div></TiltCard>
 
             {/* Nikhil */}
-            <TiltCard tiltMax={6} className="rounded-[2rem] z-10"><div className="group bg-[#0A0A0A] rounded-[2rem] overflow-hidden p-8 sm:p-10 border border-[#D4FF00]/10 hover:border-[#D4FF00]/50 transition-all duration-500 relative flex flex-col shadow-[0_0_40px_rgba(212,255,0,0.03)] hover:shadow-[0_0_60px_rgba(212,255,0,0.15)] h-full">     
-               <div className="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-[#D4FF00]/20 via-[#D4FF00] to-[#D4FF00]/20 transition-colors shadow-[0_0_15px_rgba(212,255,0,0.6)]" />
-               <div className="absolute top-0 right-0 w-64 h-64 bg-[#D4FF00]/5 rounded-bl-full pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+            <TiltCard tiltMax={6} className="rounded-[2rem] z-10"><div className="group bg-[#0A0A0A] rounded-[2rem] overflow-hidden p-8 sm:p-10 border border-white/10 hover:border-white/30 transition-all duration-500 relative flex flex-col shadow-md shadow-white/5 hover:shadow-md shadow-white/5 h-full">     
+               <div className="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-white/40/20 via-white/40 to-white/40/20 transition-colors shadow-md shadow-white/5" />
+               <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-bl-full pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
-               <div className="w-32 h-32 mb-10 rounded-full overflow-hidden mx-auto border-[3px] border-[#D4FF00]/30 group-hover:border-[#D4FF00] bg-black flex justify-center items-end transition-all duration-500 relative z-10 shadow-[0_0_30px_rgba(212,255,0,0.2)]">
+               <div className="w-32 h-32 mb-10 rounded-full overflow-hidden mx-auto border-[3px] border-white/20 group-hover:border-white/40 bg-black flex justify-center items-end transition-all duration-500 relative z-10 shadow-md shadow-white/5">
                   <img src="/assets/images/nikhil-hero-bw-cutout.png" alt="Nikhil Kamath" className="w-[85%] opacity-90 group-hover:opacity-100 transition-opacity drop-shadow-2xl" />
                </div>
 
                <h4 className="text-3xl sm:text-4xl text-white font-clash text-center mb-3 font-medium tracking-tight relative z-10 drop-shadow-md">Nikhil Kamath</h4>
-               <span className="text-[#050505] font-bold text-[11px] font-mono tracking-[0.2em] text-center block mb-10 uppercase bg-[#D4FF00] py-2 px-6 rounded-full mx-auto w-fit shadow-[0_0_15px_rgba(212,255,0,0.4)] relative z-10">The CIO / Trader</span>
+               <span className="text-white/60 font-bold text-[11px] font-mono tracking-[0.2em] text-center block mb-10 uppercase bg-white/10 py-2 px-6 text-white rounded-full mx-auto w-fit shadow-md shadow-white/5 relative z-10">The CIO / Trader</span>
 
                <div className="border-t border-white/5 pt-8 relative z-10 flex-grow flex items-center">
                  <p className="font-satoshi text-white/80 text-[17px] leading-relaxed text-center font-medium">

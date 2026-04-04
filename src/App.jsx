@@ -1,6 +1,7 @@
 import React, { lazy, Suspense, useEffect, useState } from 'react';
 import SmoothScrollWrapper from './components/layout/SmoothScrollWrapper';
 import NoiseOverlay from './components/layout/NoiseOverlay';
+import JumpNav from './components/layout/JumpNav';
 import EasterEggManager from './components/layout/EasterEggManager';
 import ChartSpine from './components/chart/ChartSpine';
 import Footer from './components/layout/Footer';
@@ -44,6 +45,7 @@ function App() {
       <EasterEggManager>
         <SmoothScrollWrapper>
           <NoiseOverlay />
+        {preloaderComplete && <JumpNav />}
           <NotFoundFlush />
         </SmoothScrollWrapper>
       </EasterEggManager>

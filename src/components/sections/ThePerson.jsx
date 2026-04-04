@@ -7,7 +7,7 @@ export default function ThePerson() {
   const yBg = useTransform(scrollYProgress, [0, 1], ['0%', '20%']);
 
   return (
-    <section data-chapter-id="the-person" className="relative w-full py-32 z-10 min-h-screen bg-[#0A0A0A] overflow-hidden">
+    <section id="section-person" data-chapter-id="the-person" className="relative w-full py-32 z-10 min-h-screen bg-[#0A0A0A] overflow-hidden">
       
       {/* Subtle Background Glow */}
       <div className="absolute top-0 right-0 w-[50vw] h-[50vw] bg-accent-chartreuse/5 rounded-full blur-[120px] mix-blend-screen pointer-events-none" />
@@ -162,28 +162,53 @@ export default function ThePerson() {
           </div>
         </div>
 
+        {/* On Changing One's Mind Card */}
+        <div className="bg-[#0A0A0A] border border-white/5 rounded-[2.5rem] p-8 md:p-14 w-full w-full mt-16 max-w-4xl mx-auto md:mx-0 relative z-10 mb-20">
+          <span className="font-mono text-xs uppercase tracking-widest text-white/40 mb-8 block">
+            On changing one's mind
+          </span>
+          <div className="font-satoshi text-white/70 space-y-8 text-lg md:text-xl">
+            <p>
+              He preached renting for years.<br/>
+              Wrote it. Said it in interviews. Meant it.
+            </p>
+            <p>
+              Then bought 7,000 sq ft in Kingfisher Towers.<br/>
+              Kiran Mazumdar-Shaw is his neighbour.
+            </p>
+          </div>
+          <blockquote className="border-l-2 border-[#D4FF00] pl-8 my-10">
+            <p className="font-garamond text-white/90 text-2xl lg:text-3xl italic leading-relaxed">
+              "With new information, if you are able to change your mind quickly — that has served me well."
+            </p>
+          </blockquote>
+          <p className="text-white/40 text-sm md:text-base italic font-satoshi mt-8">
+            He was right to change his mind. He was right to say so publicly.
+          </p>
+        </div>
+
         {/* The Man Box */}
         <motion.div 
-          className="relative bg-[#D4FF00] rounded-[2.5rem] p-12 md:p-20 overflow-hidden mb-0"
+          className="relative bg-[#111] border border-white/10 rounded-[2.5rem] p-12 md:p-20 overflow-hidden mb-0"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
           <div className="relative z-10 grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h4 className="font-clash text-5xl md:text-6xl text-black mb-px leading-none">More than</h4>
-              <h4 className="font-clash text-5xl md:text-6xl text-black mb-6 leading-none">just markets.</h4>
-              <p className="font-satoshi text-xl text-black/70 mb-8 max-w-sm">
+              <h4 className="font-clash text-5xl md:text-6xl text-white mb-px leading-none">More than</h4>
+              <h4 className="font-clash text-5xl md:text-6xl text-white mb-6 leading-none">markets.</h4>
+              <p className="font-satoshi text-xl text-white/70 mb-8 max-w-sm">
                 Up to 10 days a month in Goa. Vintage watch collector (for stories, not status). Proud owner of two Labradors: Chase and Grace.
               </p>
-              <div className="inline-flex items-center gap-3 bg-black/5 border border-black/10 rounded-full px-5 py-2.5">
-                <span className="text-black font-mono text-xs uppercase tracking-widest font-bold">Signature Fragrance:</span>
-                <span className="text-black/70 font-satoshi text-sm">Tom Ford Ombré Leather</span>
+              <div className="inline-flex items-center gap-3 bg-white/5 border border-white/10 rounded-full px-5 py-2.5">
+                <span className="text-white/60 font-mono text-xs uppercase tracking-widest font-bold">Signature Fragrance:</span>
+                <span className="text-white/70 font-satoshi text-sm">Tom Ford Ombré Leather</span>
               </div>
             </div>
             
             <div className="bg-black/90 p-10 rounded-3xl border border-white/10 shadow-2xl">
-              <span className="text-[#D4FF00] font-mono text-xs uppercase tracking-widest mb-6 block">The Insecurity</span>
+              <span className="text-white/60 font-mono text-xs uppercase tracking-widest mb-6 block">The Insecurity</span>
               <p className="font-garamond italic text-2xl lg:text-3xl text-white leading-snug mb-6">
                 "We get a lot of flak for not being good-looking people. Even our wives tell us we're ugly."
               </p>

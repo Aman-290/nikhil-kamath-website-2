@@ -4,7 +4,7 @@ import StartupConstellation from '../ui/StartupConstellation';
 
 export default function TheEcosystem() {
   return (
-    <section data-chapter-id="the-ecosystem" className="relative w-full py-32 z-10 min-h-screen">
+    <section id="section-ecosystem" data-chapter-id="the-ecosystem" className="relative w-full py-32 z-10 min-h-screen">
       
       {/* Background image */}
       <div className="absolute inset-0 z-0 pointer-events-none">
@@ -46,7 +46,7 @@ export default function TheEcosystem() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-[#D4FF00]/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-br from-white/40/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
             
             <div className="relative z-10">
               <span className="text-white/40 font-mono text-[10px] tracking-[0.2em] uppercase mb-6 block">Founded Sept 2019</span>
@@ -62,8 +62,8 @@ export default function TheEcosystem() {
                 </ul>
                 <p className="font-medium text-white italic text-lg border-b border-white/5 pb-6">"If you don't make money, we don't either."</p>
                 <p className="pt-2">That is not how this industry works. That was the point. Strategy: 60% long-only in fundamentally strong large-caps. 40% long-short derivative portfolio via algorithmic trading.</p>
-                <div className="mt-8 inline-flex items-center gap-3 bg-[#D4FF00]/10 text-[#D4FF00] px-5 py-3 rounded-full font-mono text-[11px] uppercase tracking-widest">
-                  <div className="w-1.5 h-1.5 rounded-full bg-[#D4FF00] animate-pulse"/>
+                <div className="mt-8 inline-flex items-center gap-3 bg-white/10 text-white px-5 py-3 rounded-full font-mono text-[11px] uppercase tracking-widest">
+                  <div className="w-1.5 h-1.5 rounded-full bg-white/10 animate-pulse"/>
                   32% outperformance (2020)
                 </div>
               </div>
@@ -182,26 +182,26 @@ export default function TheEcosystem() {
             
             <ul className="space-y-8 font-satoshi text-white text-[17px] leading-snug mb-16 flex-grow">
               <li className="flex gap-6 items-start">
-                <span className="text-[#D4FF00] font-mono mt-1 text-xl">—</span>
+                <span className="text-white font-mono mt-1 text-xl">—</span>
                 <span className="opacity-90">90 days. Residential campus.</span>
               </li>
               <li className="flex gap-6 items-start">
-                <span className="text-[#D4FF00] font-mono mt-1 text-xl">—</span>
+                <span className="text-white font-mono mt-1 text-xl">—</span>
                 <span className="opacity-90">Not a classroom. Not an incubator. A co-founder factory.</span>
               </li>
               <li className="flex gap-6 items-start">
-                <span className="text-[#D4FF00] font-mono mt-1 text-xl">—</span>
+                <span className="text-white font-mono mt-1 text-xl">—</span>
                 <span className="opacity-90">You arrive with an idea. You leave as a co-founder of a funded business.</span>
               </li>
               <li className="flex gap-6 items-start">
-                <span className="text-[#D4FF00] font-mono mt-1 text-xl">—</span>
+                <span className="text-white font-mono mt-1 text-xl">—</span>
                 <span className="opacity-90">Seed funding up to ₹4 crore.</span>
               </li>
             </ul>
 
             <div className="bg-[#111] p-8 rounded-xl border border-white/5 mt-auto relative overflow-hidden group">
-              <div className="absolute inset-0 bg-[#D4FF00]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <span className="text-[10px] uppercase tracking-[0.2em] text-[#D4FF00] mb-4 block font-mono">The School of Life</span>
+              <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <span className="text-[10px] uppercase tracking-[0.2em] text-white mb-4 block font-mono">The School of Life</span>
               <p className="font-satoshi text-[15px] text-white/60 leading-relaxed italic border-l-2 border-white/10 pl-4">
                 Resilience, decision-making, founder psychology.
                 <br/><br/>
